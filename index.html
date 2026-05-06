@@ -1,0 +1,3619 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026 여량중고등학교 상하이 국외테마학습여행</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+:root {
+  --red: #C8102E;
+  --gold: #D4A847;
+  --ink: #1A1A2E;
+  --paper: #FAF6F0;
+  --muted: #8B7D6B;
+  --border: #E8DFD0;
+  --card: #FFFFFF;
+  --hs-color: #1B4F8A;
+  --ms-color: #2E7D32;
+  --joint-color: #8B2020;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.hero {
+  background: var(--ink);
+  color: white;
+  padding: 2.5rem 1.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -0.5rem;
+  top: -1rem;
+  font-size: 11rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+.hero-title span { color: var(--gold); }
+.hero-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.2rem;
+}
+.hero-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.8);
+}
+.meta-chip b { color: var(--gold); }
+
+/* ── NAV ── */
+.nav-wrap {
+  background: var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.45);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.68rem;
+  padding: 0.6rem 0.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  white-space: nowrap;
+  position: relative;
+  text-align: center;
+}
+.nav-btn:nth-child(6n) { border-right: none; }
+.nav-btn:nth-child(n+7) { border-bottom: none; }
+.nav-btn.active {
+  color: var(--gold);
+  background: rgba(255,255,255,0.04);
+}
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+.nav-btn:nth-last-child(-n+5) { border-bottom: none; }
+.nav-btn.active {
+  color: var(--gold);
+  background: rgba(255,255,255,0.04);
+}
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+/* ── SECTIONS ── */
+.section { display: none; padding: 1.25rem; }
+.section.active { display: block; }
+
+/* ── DAY TABS ── */
+.day-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.day-tab {
+  flex: 1;
+  min-width: 0;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  line-height: 1.3;
+}
+.day-tab.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
+}
+.day-tab .day-num { display: block; font-size: 0.65rem; opacity: 0.7; }
+
+/* ── GROUP TOGGLE ── */
+.group-toggle {
+  display: flex;
+  background: var(--border);
+  border-radius: 0.5rem;
+  padding: 3px;
+  margin-bottom: 1.25rem;
+}
+.group-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.group-btn.hs.active {
+  background: var(--hs-color);
+  color: white;
+}
+.group-btn.ms.active {
+  background: var(--ms-color);
+  color: white;
+}
+.group-btn.hs12.active {
+  background: var(--hs-color);
+  color: white;
+}
+.group-btn.hs3.active {
+  background: #8B4513;
+  color: white;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 3.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: var(--border);
+}
+
+.tl-item {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.tl-time {
+  width: 3.5rem;
+  flex-shrink: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.68rem;
+  color: var(--muted);
+  padding-top: 0.9rem;
+  text-align: right;
+  padding-right: 0.7rem;
+  line-height: 1.2;
+}
+
+.tl-dot {
+  width: 0;
+  flex-shrink: 0;
+  position: relative;
+  margin-top: 1rem;
+}
+.tl-dot::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid white;
+  z-index: 1;
+}
+.tl-item.highlight .tl-dot::before {
+  background: var(--red);
+  border-color: var(--red);
+}
+.tl-item.gold .tl-dot::before {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.tl-body {
+  flex: 1;
+  padding: 0.7rem 0 0.7rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.tl-item:last-child .tl-body { border-bottom: none; }
+
+.tl-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 0.15rem;
+}
+.tl-item.highlight .tl-label { color: var(--red); font-weight: 700; }
+.tl-item.gold .tl-label { color: #8B6914; font-weight: 700; }
+
+.tl-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── SECTION HEADER ── */
+.sec-header {
+  margin-bottom: 1.25rem;
+}
+.sec-title {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+.sec-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── BADGE ── */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+}
+.badge.joint { background: #FFF0F0; color: var(--joint-color); border: 1px solid #FFCCCC; }
+.badge.hs { background: #EEF3FF; color: var(--hs-color); border: 1px solid #BDCFF5; }
+.badge.ms { background: #F0FFF0; color: var(--ms-color); border: 1px solid #A8D5A8; }
+.badge.hs12 { background: #EEF3FF; color: var(--hs-color); border: 1px solid #BDCFF5; }
+.badge.hs3 { background: #FFF5EE; color: #8B4513; border: 1px solid #DDBF9A; }
+
+/* ── DAY CONTENT ── */
+.day-panel { display: none; }
+.day-panel.active { display: block; }
+
+.group-panel { display: none; }
+.group-panel.active { display: block; }
+
+/* ── CARD ── */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.75rem;
+}
+.card-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+.card-body {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── INFO GRID ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+.info-cell {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.75rem;
+}
+.info-cell-label {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.info-cell-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.info-cell-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ── TIPS ── */
+.tip-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.tip-item:last-child { border-bottom: none; }
+.tip-icon {
+  width: 2rem;
+  height: 2rem;
+  background: var(--ink);
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.tip-content .tip-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+.tip-content .tip-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── CHECKLIST ── */
+.checklist-group {
+  margin-bottom: 1.5rem;
+}
+.checklist-group-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  transition: opacity 0.2s;
+}
+.check-item.checked { opacity: 0.4; }
+.check-item input[type="checkbox"] { display: none; }
+.check-box {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.check-item.checked .check-box {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.check-item.checked .check-box::after {
+  content: '✓';
+  font-size: 0.65rem;
+  color: white;
+}
+.check-label {
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.check-sub {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
+/* ── NOTICE BOX ── */
+.notice {
+  background: #FFF8E1;
+  border: 1px solid #FFECB3;
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.78rem;
+  color: #5D4037;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.notice b { color: #BF360C; }
+
+/* ── FLIGHT CARD ── */
+.flight-card {
+  background: var(--ink);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 0.75rem;
+}
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.flight-city {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+.flight-arrow { color: rgba(255,255,255,0.4); font-size: 0.9rem; }
+.flight-info {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+.flight-info b { color: white; }
+
+/* ── PROGRESS ── */
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-bottom: 0.35rem;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+.progress-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: right;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ── FOOD ── */
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+.food-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.food-emoji {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+.food-info { padding: 0 0.75rem 0.85rem; }
+.food-name {
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 0.2rem;
+}
+.food-zh {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.food-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── HOTEL ── */
+.hotel-block {
+  background: var(--ink);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.hotel-name {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.hotel-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.9rem;
+}
+.hotel-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+}
+.hotel-row-label {
+  color: rgba(255,255,255,0.45);
+  flex-shrink: 0;
+  width: 2.5rem;
+}
+.hotel-row-value { color: rgba(255,255,255,0.9); }
+
+.copy-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: background 0.15s;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.15); }
+.copy-btn.copied { color: var(--gold); }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* ── PHRASE ── */
+.phrase-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.phrase-item:last-child { border-bottom: none; }
+.phrase-ko { font-size: 0.82rem; font-weight: 500; margin-bottom: 0.2rem; }
+.phrase-zh { font-size: 1rem; color: var(--red); margin-bottom: 0.15rem; }
+.phrase-pin { font-size: 0.72rem; color: var(--muted); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+/* ── CAUTION ── */
+.law-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #FFF3E0;
+  border: 1px solid #FFCC80;
+  color: #E65100;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.law-ref:hover { background: #FFE0B2; }
+
+.caution-block {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+.caution-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background: #FFF8F8;
+  border-bottom: 1px solid #FFDDDD;
+}
+.caution-block-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.caution-block-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #C62828;
+}
+.caution-block-body {
+  padding: 0.9rem 1rem;
+  font-size: 0.8rem;
+  color: #3E2723;
+  line-height: 1.7;
+}
+.caution-block-body p { margin-bottom: 0.6rem; }
+.caution-block-body p:last-child { margin-bottom: 0; }
+
+.verdict-box {
+  background: #B71C1C;
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.85rem;
+}
+.verdict-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #FFCCBC;
+}
+.verdict-body {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.7;
+}
+
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+.do-box, .dont-box {
+  border-radius: 0.65rem;
+  padding: 0.85rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.do-box {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+}
+.dont-box {
+  background: #FFEBEE;
+  border: 1px solid #FFCDD2;
+}
+.do-box-title {
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+}
+.dont-box-title {
+  font-weight: 700;
+  color: #C62828;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+}
+.do-box li, .dont-box li {
+  margin-left: 0.9rem;
+  margin-bottom: 0.2rem;
+  color: #1B1B1B;
+}
+
+/* ── GROUP TABLE ── */
+.group-school-tabs {
+  display: flex;
+  background: var(--border);
+  border-radius: 0.5rem;
+  padding: 3px;
+  margin-bottom: 1.25rem;
+}
+.group-school-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.group-school-btn.active {
+  background: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
+}
+.group-school-panel { display: none; }
+.group-school-panel.active { display: block; }
+
+.modum-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+.modum-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+}
+.modum-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold);
+}
+.modum-teacher-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.1rem;
+}
+.modum-teacher {
+  font-size: 0.78rem;
+  color: white;
+  font-weight: 500;
+  text-align: right;
+}
+.modum-members {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.member-chip {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── ROOM ── */
+.room-school-tabs {
+  display: flex;
+  background: var(--border);
+  border-radius: 0.5rem;
+  padding: 3px;
+  margin-bottom: 1.25rem;
+}
+.room-school-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.room-school-btn.active {
+  background: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
+}
+.room-school-panel { display: none; }
+.room-school-panel.active { display: block; }
+
+.room-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+}
+.room-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  background: var(--ink);
+}
+.room-grade {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.room-gender {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+}
+.room-gender.male {
+  background: rgba(100,149,237,0.25);
+  color: #90CAF9;
+}
+.room-gender.female {
+  background: rgba(240,98,146,0.2);
+  color: #F48FB1;
+}
+.room-members {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.room-chip {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+.room-chip.teacher {
+  background: #F3F0FF;
+  border-color: #C5B8F5;
+  color: #5C35C7;
+}
+.room-section-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── WEATHER ── */
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+.weather-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+}
+.weather-card.today {
+  background: var(--ink);
+  border-color: var(--ink);
+  grid-column: 1 / -1;
+}
+.weather-date {
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-family: 'Pretendard', sans-serif;
+  margin-bottom: 0.3rem;
+}
+.weather-card.today .weather-date { color: rgba(255,255,255,0.5); }
+.weather-day {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.weather-card.today .weather-day { color: var(--gold); }
+.weather-icon { font-size: 2.2rem; margin-bottom: 0.4rem; }
+.weather-temp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.weather-card.today .weather-temp { color: white; }
+.weather-range {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.weather-card.today .weather-range { color: rgba(255,255,255,0.55); }
+.weather-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.weather-card.today .weather-desc { color: rgba(255,255,255,0.7); }
+.weather-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.weather-detail-cell {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+}
+.weather-detail-label {
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.weather-detail-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.weather-loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.weather-error {
+  background: #FFF8E1;
+  border: 1px solid #FFE082;
+  border-radius: 0.6rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  color: #5D4037;
+  text-align: center;
+}
+.weather-updated {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-align: right;
+  margin-bottom: 0.75rem;
+  font-family: 'Pretendard', sans-serif;
+}
+.weather-refresh-btn {
+  display: block;
+  width: 100%;
+  background: var(--ink);
+  color: var(--gold);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  font-size: 0.82rem;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+/* ── PHRASE NEW ── */
+.phrase-group-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--ink);
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0 0.5rem;
+  display: inline-block;
+}
+.phrase-card {
+  background: var(--ink);
+  border-radius: 0.65rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.phrase-card:active { background: #2a2a4a; }
+.phrase-card-body { flex: 1; min-width: 0; }
+.phrase-ko2 {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.2rem;
+}
+.phrase-zh2 {
+  font-size: 1.15rem;
+  color: #FF6B6B;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+.phrase-pin2 {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+}
+.speak-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.4rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.speak-btn:active { background: rgba(255,255,255,0.2); }
+.speak-btn.playing { background: rgba(255,107,107,0.3); border-color: #FF6B6B; }
+
+/* ── EMERGENCY ── */
+.emg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+.emg-card {
+  background: var(--ink);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.emg-card:active { background: #2a2a4a; }
+.emg-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.emg-info {}
+.emg-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+.emg-number {
+  font-size: 0.78rem;
+  color: var(--gold);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+}
+.emg-card.full {
+  grid-column: 1 / -1;
+}
+.emg-notice {
+  background: #1a1a2e;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.emg-notice b { color: var(--gold); }
+
+/* ── KNOWLEDGE TOGGLE ── */
+.knowledge-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+  background: rgba(200,16,46,0.1);
+  border: 1px solid rgba(200,16,46,0.25);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--red);
+  cursor: pointer;
+  font-family: 'Pretendard', sans-serif;
+  transition: background 0.15s;
+}
+.knowledge-toggle:active { background: rgba(200,16,46,0.2); }
+.knowledge-box {
+  margin-top: 0.75rem;
+  background: #FFFDF5;
+  border: 1px solid #F0E6C8;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+.knowledge-item {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid #F0E6C8;
+}
+.knowledge-item:last-child { border-bottom: none; }
+.knowledge-q {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8B2020;
+  margin-bottom: 0.3rem;
+}
+.knowledge-a {
+  font-size: 0.75rem;
+  color: #3E2723;
+  line-height: 1.65;
+}
+
+/* ── MAP ── */
+.map-place-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+  text-decoration: none;
+  display: block;
+  transition: box-shadow 0.15s;
+}
+.map-place-card:active { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.map-place-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+}
+.map-place-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.map-place-icon.red { background: #FFEBEE; }
+.map-place-icon.blue { background: #E3F2FD; }
+.map-place-icon.green { background: #E8F5E9; }
+.map-place-icon.gold { background: #FFF8E1; }
+.map-place-icon.purple { background: #F3E5F5; }
+.map-place-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.map-place-zh {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.map-place-addr {
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding: 0 1rem 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+.map-open-btn {
+  background: var(--ink);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: 'Pretendard', sans-serif;
+}
+.map-category-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── EXCHANGE ── */
+.exchange-box {
+  background: var(--ink);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.exchange-rate-display {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.exchange-rate-main {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.exchange-rate-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
+.exchange-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.exchange-input-wrap { }
+.exchange-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.3rem;
+}
+.exchange-input {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  font-family: 'Pretendard', sans-serif;
+  text-align: right;
+}
+.exchange-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.exchange-arrow {
+  font-size: 1.2rem;
+  color: var(--gold);
+  text-align: center;
+  margin-top: 1.2rem;
+}
+.exchange-quick {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.exchange-quick-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-family: 'Pretendard', sans-serif;
+  transition: background 0.15s;
+}
+.exchange-quick-btn:active { background: rgba(255,255,255,0.2); }
+.exchange-ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.exchange-ref-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.exchange-ref-label { font-size: 0.75rem; color: var(--muted); }
+.exchange-ref-value { font-size: 0.85rem; font-weight: 700; color: var(--ink); }
+
+/* ── SCROLL TOP ── */
+.scroll-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--ink);
+  color: var(--gold);
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  z-index: 50;
+}
+.scroll-top.visible { display: flex; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-title">2026 여량중고등학교<br><span>상하이 국외테마학습여행</span></div>
+  <div class="hero-sub">여량중학교 + 여량고등학교 · 2026.05.12–05.15</div>
+  <div class="hero-meta">
+    <span class="meta-chip">✈️ OZ363/362</span>
+    <span class="meta-chip">🏨 위즈덤로즈호텔</span>
+    <span class="meta-chip">💱 <b>¥1 ≈ 195원</b></span>
+    <span class="meta-chip">⏰ 한국 -1h</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showSection('schedule', this)">📅 일정</button>
+    <button class="nav-btn" onclick="showSection('hotel', this)">🏨 호텔</button>
+    <button class="nav-btn" onclick="showSection('room', this)">🛏️ 방배정</button>
+    <button class="nav-btn" onclick="showSection('group', this)">👥 모둠</button>
+    <button class="nav-btn" onclick="showSection('phrase', this)">💬 회화</button>
+    <button class="nav-btn" onclick="showSection('emergency', this)">🚨 긴급</button>
+    <button class="nav-btn" onclick="showSection('weather', this)">🌤️ 날씨</button>
+    <button class="nav-btn" onclick="showSection('checklist', this)">✅ 체크</button>
+    <button class="nav-btn" onclick="showSection('map', this)">🗺️ 지도</button>
+    <button class="nav-btn" onclick="showSection('exchange', this)">💱 환율</button>
+    <button class="nav-btn" onclick="showSection('caution', this)">⚠️ 주의</button>
+    <button class="nav-btn" onclick="showSection('tips', this)">💡 팁</button>
+  </nav>
+</div>
+
+<!-- ===== SCHEDULE ===== -->
+<div id="sec-schedule" class="section active">
+
+  <!-- Day Tabs -->
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="showDay(1)"><span class="day-num">5/12</span>제1일</button>
+    <button class="day-tab" onclick="showDay(2)"><span class="day-num">5/13</span>제2일</button>
+    <button class="day-tab" onclick="showDay(3)"><span class="day-num">5/14</span>제3일</button>
+    <button class="day-tab" onclick="showDay(4)"><span class="day-num">5/15</span>제4일</button>
+  </div>
+
+  <!-- DAY 1 -->
+  <div id="day1" class="day-panel active">
+    <div class="sec-header">
+      <span class="badge joint">중학교 + 고등학교 공동 일정</span>
+      <div class="sec-title">출발 & 역사 탐방</div>
+      <div class="sec-desc">여량 새벽 출발 → 인천 → 상하이 도착 후 임시정부·홍구공원·동방명주</div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="flight-city">ICN</span>
+        <span class="flight-arrow">→</span>
+        <span class="flight-city">PVG</span>
+      </div>
+      <div class="flight-info">
+        <span><b>OZ363</b> · 10:45 출발</span>
+        <span><b>12:25</b> 도착</span>
+        <span>약 2시간 15분</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item gold">
+        <div class="tl-time">03:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">학교 출발</div>
+          <div class="tl-desc">국내 버스 → 인천공항 이동</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">인천공항 출발 ✈️ OZ363</div>
+          <div class="tl-desc">아시아나항공 인천 → 상하이 푸동</div>
+        </div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-time">12:25</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">상하이 푸동공항 도착 · 가이드 미팅</div>
+          <div class="tl-desc">입국심사 후 현지 가이드 합류 · 시내 이동 (약 50분)</div>
+        </div>
+      </div>
+      <div class="tl-item highlight">
+        <div class="tl-time">13:10</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🇰🇷 대한민국 임시정부 청사</div>
+          <div class="tl-desc">김구 선생이 활동했던 역사 현장. 마당루 골목 안 시쿠먼 가옥. 한국어 안내 가능.</div>
+          <button class="knowledge-toggle" onclick="toggleKnowledge('knowledge-imsi')">📖 관람 전 배경지식 보기</button>
+          <div id="knowledge-imsi" class="knowledge-box" style="display:none;">
+            <div class="knowledge-item">
+              <div class="knowledge-q">임시정부가 왜 상하이에 세워졌나요?</div>
+              <div class="knowledge-a">1919년 3·1 운동 직후, 독립운동가들이 일제의 감시를 피해 활동하기 쉬운 상하이 프랑스 조계지로 모였어요. 외국 땅이라 일본 경찰이 직접 단속하기 어려웠고, 세계 각국 외교 채널과 연결하기도 유리한 도시였어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">임시정부는 언제 수립됐나요?</div>
+              <div class="knowledge-a">1919년 4월 11일, 상하이에서 임시의정원이 구성되고 임시헌장이 제정되면서 대한민국 임시정부가 출범했어요. "대한민국은 민주공화국"이라는 내용이 이때 처음 선언됐어요. 현재 대한민국 헌법도 이 임시정부의 법통을 이어받고 있어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">지금 우리가 보는 이 건물은 언제 쓰였나요?</div>
+              <div class="knowledge-a">마당루(马当路) 306통 4호 청사는 임시정부가 1926년부터 1932년까지 6년간 사용한 건물이에요. 임시정부는 상하이 시절에만 청사를 12차례 이상 옮겼는데, 이 건물이 가장 오래 사용한 곳이에요. 1993년 한국 정부와 삼성물산의 지원으로 복원됐어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">왜 1932년에 상하이를 떠났나요?</div>
+              <div class="knowledge-a">1932년 4월 윤봉길 의사가 홍커우공원에서 의거를 일으킨 뒤 일본의 압박이 극도로 강해졌어요. 임시정부는 더 이상 상하이에 머물 수 없어 항저우로 피신했고, 이후 충칭까지 약 8년간 중국 각지를 떠돌며 독립운동을 이어갔어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">건물 안에서 무엇을 볼 수 있나요?</div>
+              <div class="knowledge-a">1층에는 당시 주방과 생활공간이 복원돼 있고, 2층에는 김구 선생의 집무실 겸 침실과 임시정부 요인들의 숙소가 재현돼 있어요. 3층 전시실에는 독립선언서, 임시정부 요인 사진, 윤봉길·이봉창 의사 의거 관련 자료 등이 전시돼 있어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">관람 시 알아두면 좋은 점은?</div>
+              <div class="knowledge-a">건물이 협소하고 골목 깊숙이 있어요. 여러 가옥을 이어서 전시 공간으로 확장한 구조라 이동 동선이 좁아요. 한국어 안내가 가능하고, 입장료는 무료예요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item highlight">
+        <div class="tl-time">오후</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🌸 홍구공원 (매헌기념관)</div>
+          <div class="tl-desc">윤봉길 의사 도시락 폭탄 의거 현장. 매헌기념관에서 의거 배경 학습.</div>
+          <button class="knowledge-toggle" onclick="toggleKnowledge('knowledge-hongkou')">📖 관람 전 배경지식 보기</button>
+          <div id="knowledge-hongkou" class="knowledge-box" style="display:none;">
+            <div class="knowledge-item">
+              <div class="knowledge-q">윤봉길 의사는 누구인가요?</div>
+              <div class="knowledge-a">윤봉길(1908~1932)은 충청남도 예산 출신 독립운동가예요. 호는 매헌(梅軒)이에요. 고향에서 농민 계몽 운동을 하다가 1930년 만주로 망명했고, 1931년 상하이로 건너와 김구 선생을 찾아가 독립운동에 몸 바칠 뜻을 밝혔어요. 이후 김구가 이끄는 한인애국단에 가입했어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">의거는 어떻게 일어났나요?</div>
+              <div class="knowledge-a">1932년 4월 29일, 훙커우공원에서 일본 천황 생일(천장절)과 상하이사변 전승 기념식이 열렸어요. 윤봉길 의사는 도시락과 물통 모양으로 만든 폭탄을 가지고 행사장에 들어가, 기념식 단상을 향해 폭탄을 투척했어요. 이 의거로 일본 상하이 파견군 사령관 등 다수의 일본군 고위 인사가 사망하거나 중상을 입었어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">의거 후 윤봉길 의사는 어떻게 됐나요?</div>
+              <div class="knowledge-a">의거 직후 현장에서 일본 헌병에게 체포됐어요. 군법회의에서 사형을 선고받고 일본으로 이송된 뒤, 1932년 12월 19일 일본 가나자와에서 총살형으로 순국했어요. 향년 24세였어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">이 의거가 왜 중요한가요?</div>
+              <div class="knowledge-a">국제적으로 대한민국 임시정부와 한국인의 독립 의지를 알리는 계기가 됐어요. 당시 중화민국의 장제스 총통이 이 의거 소식을 듣고 "중국의 100만 대군도 하지 못한 일을 한 조선 청년이 해냈다"며 감탄하고, 임시정부 지원을 결정했어요. 이는 임시정부가 이후 중국 국민당 정부와 연대해 항일 무장투쟁을 본격화하는 발판이 됐어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">'홍구공원'과 '루쉰공원'은 같은 곳인가요?</div>
+              <div class="knowledge-a">네, 같은 곳이에요. 의거 당시 이름은 훙커우공원(虹口公園)이었는데, 이후 중국 문학가 루쉰의 이름을 따 루쉰공원(鲁迅公园)으로 바뀌었어요. 현재 공원 안에 윤봉길 의사를 기리는 매헌기념관이 설치돼 있어요.</div>
+            </div>
+            <div class="knowledge-item">
+              <div class="knowledge-q">관람 시 알아두면 좋은 점은?</div>
+              <div class="knowledge-a">매헌기념관은 루쉰공원 안에 위치해 있어요. 공원 입장은 무료예요. 기념관 내부에는 의거 당시 사용된 도시락·물통 폭탄의 복제품과 사진 자료 등이 전시돼 있어요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">오후</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🗼 동방명주타워 (중간층)</div>
+          <div class="tl-desc">상하이의 상징 타워. 중간층 전망대 관람.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">오후</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🏛️ 동방명주 지하 역사박물관</div>
+          <div class="tl-desc">상하이의 역사를 밀랍인형으로 전시한 박물관. 동방명주 지하 위치.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">저녁</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🍽️ 석식</div>
+        </div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-time">20:50</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🚢 황포강 유람선 야경</div>
+          <div class="tl-desc">신·구 초고층 빌딩 야경 유람. 상하이 백만불 야경.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">밤</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🏨 위즈덤로즈호텔 투숙</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div id="day2" class="day-panel">
+    <div class="group-toggle">
+      <button class="group-btn hs12 active" onclick="showGroup(2,'hs12',this)">고1·2학년</button>
+      <button class="group-btn hs3" onclick="showGroup(2,'hs3',this)">고3학년</button>
+      <button class="group-btn ms" onclick="showGroup(2,'ms',this)">중학교</button>
+    </div>
+
+    <!-- 고1·2 -->
+    <div id="day2-hs12" class="group-panel active">
+      <div class="sec-header">
+        <span class="badge hs">고등학교 1·2학년</span>
+        <div class="sec-title">아쿠아리움 · 쇼핑 · 예원</div>
+        <div class="sec-desc">오션 아쿠아리움 → 난징동루 점심 → 미니소·바이롄ZX → 샤오롱바오 → 예원 야경</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">08:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">호텔 출발 → 상하이 오션 아쿠아리움</div>
+            <div class="tl-desc">이동 50–60분</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🐠 상하이 오션 아쿠아리움</div>
+            <div class="tl-desc">아시아 최대급 아쿠아리움 관람. 약 3시간.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">루자쭈이역 → 난징동루역 이동</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🥟 동북인가 점심 식사</div>
+            <div class="tl-desc">东北人家饺子坊 · 13:15까지</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">13:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🛍️ 미니소 (1시간) 4층</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">14:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎌 바이롄ZX 창취창 (2시간)</div>
+            <div class="tl-desc">百联ZX创趣场 6층 애니메이션 · 일본 IP 팝업, 피규어, 아트토이</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🥟 라이라이 샤오롱바오 석식</div>
+            <div class="tl-desc">莱莱小笼包乔艾本店 · 18:15까지</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">18:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏮 예원 관람</div>
+            <div class="tl-desc">1559년 명대 정원 야경 관람. 약 1시간 25분.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">예원 → 호텔 출발 (21:00 도착)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 고3 -->
+    <div id="day2-hs3" class="group-panel">
+      <div class="sec-header">
+        <span class="badge hs3">고등학교 3학년</span>
+        <div class="sec-title">게살국수 · 헤이티 · 바이롄ZX · 와이탄</div>
+        <div class="sec-desc">난징동루 미식 투어 → 바이롄ZX·미니소 → 홍쿠이지아 → 와이탄 야경</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">호텔 출발</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🦀 장씨네 게살국수 (1시간)</div>
+            <div class="tl-desc">庄氏隆兴·非遗蟹点 난징동루점 · 上海首店</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🧋 헤이티 (40분)</div>
+            <div class="tl-desc">喜茶 상하이 신세계성점</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:10</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🥐 릴리안 베이커리 (20분)</div>
+            <div class="tl-desc">莉莲 신세계성점</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">13:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎌 바이롄ZX 창취창 (2시간)</div>
+            <div class="tl-desc">百联ZX创趣场 · 6층 애니메이션</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">15:10</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🛍️ 미니소 (1시간)</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🦞 홍쿠이지아 석식 (1시간)</div>
+            <div class="tl-desc">红盔甲·小龙虾 인민광장점 · 가재 요리 전문</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">18:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🌃 와이탄 야경 구경 (2시간)</div>
+            <div class="tl-desc">황푸강 서안 야경 산책. 조명 풀가동 19:30–22:00.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">와이탄 → 호텔 (21:00 도착)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 중학교 Day2 -->
+    <div id="day2-ms" class="group-panel">
+      <div class="sec-header">
+        <span class="badge ms">중학교</span>
+        <div class="sec-title">주가각 수향마을 · 티엔즈팡</div>
+        <div class="sec-desc">명청시대 수향마을 주가각 → 상하이 도심 속 비밀 골목 티엔즈팡</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item gold">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🚌 주가각(朱家角)으로 이동</div>
+            <div class="tl-desc">약 1시간 30분 이동</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">오전</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏛️ 청상하이우정국 (淸朝郵局)</div>
+            <div class="tl-desc">청나라 시대 상하이 우정국. 보존 상태가 좋은 역사 건물.</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">오전</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🌉 방생교 (放生橋)</div>
+            <div class="tl-desc">화동지역에서 가장 길고 큰 돌 아치형 다리. '생명을 살려 덕을 쌓는다'는 의미.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">오전</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏘️ 북대가 거리</div>
+            <div class="tl-desc">명·청시대 건축들이 늘어선 주가각 대표 거리.</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">오전</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🛶 운하 유람</div>
+            <div class="tl-desc">주가각 수향의 운하를 배로 유람.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">13:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🚌 상하이 귀환 후 중식</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">오후</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎨 티엔즈팡 (田子坊)</div>
+            <div class="tl-desc">1930년대 시쿠먼 골목 개조 갤러리·카페·기념품 거리. 상하이 도심 속 숨겨진 공간.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">18:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍽️ 석식 후 호텔 투숙</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div id="day3" class="day-panel">
+    <div class="group-toggle">
+      <button class="group-btn hs12 active" onclick="showGroup(3,'hs12',this)">고1·2학년</button>
+      <button class="group-btn hs3" onclick="showGroup(3,'hs3',this)">고3학년</button>
+      <button class="group-btn ms" onclick="showGroup(3,'ms',this)">중학교</button>
+    </div>
+
+    <!-- 고1·2 Day3 -->
+    <div id="day3-hs12" class="group-panel active">
+      <div class="sec-header">
+        <span class="badge hs">고등학교 1·2학년</span>
+        <div class="sec-title">야생동물원 · 디즈니타운</div>
+        <div class="sec-desc">상하이 야생동물원 → 디즈니타운 → 치즈케이크 팩토리</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">호텔 출발</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">09:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🦁 상하이 야생 동물원 (5시간)</div>
+            <div class="tl-desc">아시아 최대급 동물원. 사파리 버스, 판다, 코끼리 포함.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍽️ 동물원 내 식당 점심</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">15:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏰 상하이 디즈니타운 (3시간)</div>
+            <div class="tl-desc">迪士尼小镇地面停车场(入口) · 쇼핑·레스토랑·엔터테인먼트</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">18:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍰 치즈케이크 팩토리 석식</div>
+            <div class="tl-desc">디즈니타운 내 위치</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">19:00~</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">호텔 복귀 또는 비스터빌리지 아울렛</div>
+            <div class="tl-desc">21:00 호텔 도착</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 고3 Day3 -->
+    <div id="day3-hs3" class="group-panel">
+      <div class="sec-header">
+        <span class="badge hs3">고등학교 3학년</span>
+        <div class="sec-title">티엔즈팡 · 우캉맨션 · 예원 야경</div>
+        <div class="sec-desc">티엔즈팡 골목 → 우캉맨션 → 신천지 점심·더루프 → 예원 야경</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">호텔 출발</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎨 티엔즈팡 (2시간)</div>
+            <div class="tl-desc">1930년대 시쿠먼 골목 개조 갤러리·카페·소품샵 거리. 칭지 핸드크림 구매 포인트.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:10</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍢 헌지우이치엔 일월광점 점심 (1시간 20분)</div>
+            <div class="tl-desc">很久以前羊肉串(打浦桥日月光店) · 양꼬치 전문</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">15:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏛️ 우캉맨션 + 우캉루 (2시간)</div>
+            <div class="tl-desc">武康大楼 · 1924년 노르망디식 아파트. 플라타너스 가로수 골목 산책.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍵 점도덕 신천지점 석식 (1시간)</div>
+            <div class="tl-desc">点都德(环宇荟店) · 광식 딤섬 전문</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">18:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍸 더루프 (25분)</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">19:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏮 예원 야경 (1시간 40분)</div>
+            <div class="tl-desc">上海豫园 · 야간 조명과 함께 명대 정원 산책</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">21:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">예원 → 호텔 (22:00 도착)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 중학교 Day3 -->
+    <div id="day3-ms" class="group-panel">
+      <div class="sec-header">
+        <span class="badge ms">중학교</span>
+        <div class="sec-title">상하이 디즈니랜드</div>
+        <div class="sec-desc">하루 종일 디즈니랜드 체험</div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item gold">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🏰 상하이 디즈니랜드 입장</div>
+            <div class="tl-desc">Shanghai Disneyland · 아시아 최대 디즈니파크. 하루 종일 자유 체험.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">점심</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🍽️ 파크 내 식당 이용</div>
+            <div class="tl-desc">메인스트리트·판타지랜드 등 구역별 다양한 식당 운영.</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">오후</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎢 어트랙션 자유 체험</div>
+            <div class="tl-desc">토이스토리랜드·조커즈 와일드 런·투모로우랜드 등. 인기 어트랙션은 오전 일찍 탑승 권장.</div>
+          </div>
+        </div>
+        <div class="tl-item gold">
+          <div class="tl-time">저녁</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-label">🎆 퍼레이드·불꽃 쇼 관람 후 호텔 복귀</div>
+            <div class="tl-desc">야간 퍼레이드는 보통 20:00 전후. 종료 후 출구 혼잡 예상.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice">
+        디즈니랜드는 당일 대기 시간이 길 수 있어요. 디즈니 앱(Shanghai Disney Resort)에서 라이트닝 레인 패스를 미리 확인해두면 좋아요.
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div id="day4" class="day-panel">
+    <div class="sec-header">
+      <span class="badge joint">중학교 + 고등학교 공동 일정</span>
+      <div class="sec-title">귀국일</div>
+      <div class="sec-desc">호텔 체크아웃 → 푸동공항 → 인천 → 여량</div>
+    </div>
+
+    <div class="notice">
+      <b>주의</b> 노동절 연휴 마지막 날로 보안검색이 길어질 수 있어요. 공항은 출발 <b>3시간 이상</b> 전 도착을 권장해요.
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-route">
+        <span class="flight-city">PVG</span>
+        <span class="flight-arrow">→</span>
+        <span class="flight-city">ICN</span>
+      </div>
+      <div class="flight-info">
+        <span><b>OZ362</b> · 11:10 출발</span>
+        <span><b>14:20</b> 도착</span>
+        <span>약 2시간 10분</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">호텔 조식 후 체크아웃</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:00~</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">전용차량 → 푸동공항 이동</div>
+          <div class="tl-desc">📋 기사에게: 请送我到浦东国际机场</div>
+        </div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-time">11:10</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">✈️ 상하이 출발 OZ362</div>
+        </div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-time">14:20</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">인천공항 도착</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:20~</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">국내 버스 → 여량 출발</div>
+        </div>
+      </div>
+      <div class="tl-item highlight">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🏠 여량 도착</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HOTEL ===== -->
+<div id="sec-hotel" class="section">
+  <div class="sec-header">
+    <div class="sec-title">숙소 안내</div>
+  </div>
+
+  <div class="hotel-block">
+    <div class="hotel-name">위즈덤로즈호텔</div>
+    <div class="hotel-sub">Wisdom Rose Hotel · 준5성급 동급</div>
+    <div class="hotel-row">
+      <span class="hotel-row-label">주소</span>
+      <span class="hotel-row-value">上海市浦东新区宣秋路699号1栋</span>
+    </div>
+    <div class="hotel-row">
+      <span class="hotel-row-label">구역</span>
+      <span class="hotel-row-value">푸동신구 (浦东新区)</span>
+    </div>
+    <div class="hotel-row">
+      <span class="hotel-row-label">체크인</span>
+      <span class="hotel-row-value">5월 12일 (화) 저녁</span>
+    </div>
+    <div class="hotel-row">
+      <span class="hotel-row-label">체크아웃</span>
+      <span class="hotel-row-value">5월 15일 (금) 아침</span>
+    </div>
+    <button class="copy-btn" onclick="copyText('上海市浦东新区宣秋路699号1栋', this)">📋 한자 주소 복사</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">택시기사에게 보여주세요</div>
+    <div style="font-size: 1rem; color: var(--red); margin: 0.5rem 0; line-height: 1.6;">请送我到浦东新区宣秋路699号1栋 위즈덤로즈酒店</div>
+    <button style="background: var(--ink); color: var(--gold); border: none; border-radius: 0.4rem; padding: 0.4rem 0.9rem; font-size: 0.75rem; cursor: pointer; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;" onclick="copyText('请送我到浦东新区宣秋路699号1栋', this)">복사</button>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-cell-label">환율</div>
+      <div class="info-cell-value">¥1 ≈ 195원</div>
+      <div class="info-cell-sub">기준율</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">시차</div>
+      <div class="info-cell-value">한국 -1h</div>
+      <div class="info-cell-sub">한국 12시 = 상하이 11시</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">전압</div>
+      <div class="info-cell-value">220V</div>
+      <div class="info-cell-sub">한국 멀티탭 사용 가능</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">5월 날씨</div>
+      <div class="info-cell-value">22–28℃</div>
+      <div class="info-cell-sub">습도 높음·소나기 가능</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">긴급 연락처</div>
+    <div class="card-body" style="margin-top: 0.4rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div style="display: flex; justify-content: space-between;"><span>주상하이 한국 총영사관</span><a href="tel:+862162955000" style="color: var(--red); text-decoration: none; font-weight: 700;">+86 21-6295-5000</a></div>
+        <div style="display: flex; justify-content: space-between;"><span>경찰</span><a href="tel:110" style="color: var(--red); text-decoration: none; font-weight: 700;">110</a></div>
+        <div style="display: flex; justify-content: space-between;"><span>구급</span><a href="tel:120" style="color: var(--red); text-decoration: none; font-weight: 700;">120</a></div>
+        <div style="display: flex; justify-content: space-between;"><span>외교부 영사콜센터</span><a href="tel:+82232100404" style="color: var(--red); text-decoration: none; font-weight: 700;">+82 2-3210-0404</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOD ===== -->
+<div id="sec-food" class="section">
+  <div class="sec-header">
+    <div class="sec-title">이번 일정 음식 포인트</div>
+    <div class="sec-desc">일정에 포함된 식당과 꼭 먹어야 할 상하이 음식</div>
+  </div>
+
+  <div class="notice">
+    상하이 음식은 <b>단맛·간장·기름</b>이 핵심이에요. "진하다"는 느낌이 상하이 맛의 정체성이에요.
+  </div>
+
+  <div class="food-grid">
+    <div class="food-card">
+      <div class="food-emoji">🥟</div>
+      <div class="food-info">
+        <div class="food-name">샤오롱바오</div>
+        <div class="food-zh">小笼包</div>
+        <div class="food-desc">육즙 터지는 만두. 식초+생강채 찍어서. 라이라이 샤오롱바오 방문 예정.</div>
+      </div>
+    </div>
+    <div class="food-card">
+      <div class="food-emoji">🦀</div>
+      <div class="food-info">
+        <div class="food-name">게살국수</div>
+        <div class="food-zh">蟹粉面</div>
+        <div class="food-desc">장씨네 게살국수 방문 예정. 상하이 최고급 게살 면요리.</div>
+      </div>
+    </div>
+    <div class="food-card">
+      <div class="food-emoji">🦞</div>
+      <div class="food-info">
+        <div class="food-name">가재 요리</div>
+        <div class="food-zh">小龙虾</div>
+        <div class="food-desc">홍쿠이지아(红盔甲) 방문 예정. 마라 소스 가재.</div>
+      </div>
+    </div>
+    <div class="food-card">
+      <div class="food-emoji">🍢</div>
+      <div class="food-info">
+        <div class="food-name">양꼬치</div>
+        <div class="food-zh">羊肉串</div>
+        <div class="food-desc">헌지우이치엔 방문 예정. 중국식 숯불 양꼬치.</div>
+      </div>
+    </div>
+    <div class="food-card">
+      <div class="food-emoji">🧋</div>
+      <div class="food-info">
+        <div class="food-name">헤이티</div>
+        <div class="food-zh">喜茶</div>
+        <div class="food-desc">중국 프리미엄 밀크티 체인. 한국보다 훨씬 저렴.</div>
+      </div>
+    </div>
+    <div class="food-card">
+      <div class="food-emoji">🥐</div>
+      <div class="food-info">
+        <div class="food-name">릴리안 베이커리</div>
+        <div class="food-zh">莉莲蛋糕</div>
+        <div class="food-desc">상하이 인기 베이커리 체인. 에그타르트 필수.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-header">
+    <div class="sec-title">식사 예절</div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      중국 식당에서 계산은 <b>마이딴(买单)</b>이라고 하면 돼요. 테이블에서 계산하는 게 보통이고, 알리페이·위챗페이 QR 결제가 표준이에요. 젓가락을 밥그릇에 꽂아두는 건 금기예요.
+    </div>
+  </div>
+</div>
+
+<!-- ===== PHRASE ===== -->
+<div id="sec-phrase" class="section">
+  <div class="sec-header">
+    <div class="sec-title">여행 회화 — 진짜 쓸 것만</div>
+    <div class="sec-desc">택시·식당·길묻기·응급. 큰 글씨로 보여주거나 🔊 눌러 음성 재생.</div>
+  </div>
+
+  <div class="notice" style="margin-bottom:1rem;">
+    🔊 버튼을 누르면 중국어 발음이 재생돼요. 기기 볼륨을 확인해주세요.
+  </div>
+
+  <!-- 택시·디디 -->
+  <div class="phrase-group-label">🚕 택시·디디</div>
+  <div class="phrase-card" onclick="speak('请送我到这里')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">여기로 가주세요</div>
+      <div class="phrase-zh2">请送我到这里</div>
+      <div class="phrase-pin2">qǐng sòng wǒ dào zhè lǐ · 칭쏭워따오쩌리</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请送我到这里')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('在这儿停一下')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">여기서 세워주세요</div>
+      <div class="phrase-zh2">在这儿停一下</div>
+      <div class="phrase-pin2">zài zhèr tíng yí xià · 짜이쩔 팅이쌰</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('在这儿停一下')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('多少钱')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">얼마예요?</div>
+      <div class="phrase-zh2">多少钱?</div>
+      <div class="phrase-pin2">duō shǎo qián · 뚜어샤오치엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('多少钱')">🔊</button>
+  </div>
+
+  <!-- 식당 -->
+  <div class="phrase-group-label">🍜 식당</div>
+  <div class="phrase-card" onclick="speak('请给我菜单')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">메뉴 주세요</div>
+      <div class="phrase-zh2">请给我菜单</div>
+      <div class="phrase-pin2">qǐng gěi wǒ cài dān · 칭게이워 차이딴</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我菜单')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('来一份这个')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">이거 한 개 주세요</div>
+      <div class="phrase-zh2">来一份这个</div>
+      <div class="phrase-pin2">lái yī fèn zhè ge · 라이이펀쩌거</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('来一份这个')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('不要辣')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">맵지 않게요</div>
+      <div class="phrase-zh2">不要辣</div>
+      <div class="phrase-pin2">bú yào là · 부야오라</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('不要辣')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('买单')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">계산해주세요</div>
+      <div class="phrase-zh2">买单</div>
+      <div class="phrase-pin2">mǎi dān · 마이딴</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('买单')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我用支付宝付款')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">알리페이로 결제할게요</div>
+      <div class="phrase-zh2">我用支付宝付款</div>
+      <div class="phrase-pin2">wǒ yòng zhī fù bǎo fù kuǎn · 워용즈푸바오푸쿠안</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我用支付宝付款')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我发票')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">영수증 주세요</div>
+      <div class="phrase-zh2">请给我发票</div>
+      <div class="phrase-pin2">qǐng gěi wǒ fā piào · 칭게이워 파파오</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我发票')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('一共多少钱')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">얼마예요? (합계)</div>
+      <div class="phrase-zh2">一共多少钱?</div>
+      <div class="phrase-pin2">yī gòng duō shǎo qián · 이공 뚜어샤오치엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('一共多少钱')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('需要等多久')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">대기 얼마나 걸려요?</div>
+      <div class="phrase-zh2">需要等多久?</div>
+      <div class="phrase-pin2">xū yào děng duō jiǔ · 쉬야오 떵 뚜어쥬</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('需要等多久')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我一杯水')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">물 한 잔 주세요 (따뜻한 물 기본)</div>
+      <div class="phrase-zh2">请给我一杯水</div>
+      <div class="phrase-pin2">qǐng gěi wǒ yī bēi shuǐ · 칭게이워 이뻬이슈이</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我一杯水')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我要冰水')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">차가운 물 주세요</div>
+      <div class="phrase-zh2">我要冰水</div>
+      <div class="phrase-pin2">wǒ yào bīng shuǐ · 워야오 삥슈이</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我要冰水')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('不要香菜')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">고수 빼주세요 ⚠️ 필수</div>
+      <div class="phrase-zh2">不要香菜</div>
+      <div class="phrase-pin2">bú yào xiāng cài · 부야오 상자이</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('不要香菜')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我对花生过敏')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">땅콩 알레르기 있어요</div>
+      <div class="phrase-zh2">我对花生过敏</div>
+      <div class="phrase-pin2">wǒ duì huā shēng guò mǐn · 워뚜이 화셩 궈민</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我对花生过敏')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我筷子和勺子')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">젓가락 / 숟가락 주세요</div>
+      <div class="phrase-zh2">请给我筷子和勺子</div>
+      <div class="phrase-pin2">qǐng gěi wǒ kuài zi hé sháo zi · 칭게이워 콰이쯔 허 샤오쯔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我筷子和勺子')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我餐巾纸')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">냅킨 / 휴지 주세요</div>
+      <div class="phrase-zh2">请给我餐巾纸</div>
+      <div class="phrase-pin2">qǐng gěi wǒ cān jīn zhǐ · 칭게이워 찬진즈</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我餐巾纸')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('很好吃')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">맛있어요</div>
+      <div class="phrase-zh2">很好吃</div>
+      <div class="phrase-pin2">hěn hǎo chī · 헌하오츠</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('很好吃')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请帮我打包')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">남은 거 포장해주세요</div>
+      <div class="phrase-zh2">请帮我打包</div>
+      <div class="phrase-pin2">qǐng bāng wǒ dǎ bāo · 칭빵워 따바오</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请帮我打包')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('再来一个')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">하나 더 주세요</div>
+      <div class="phrase-zh2">再来一个</div>
+      <div class="phrase-pin2">zài lái yī gè · 짜이라이 이거</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('再来一个')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请说慢一点')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">잠시만요 / 천천히 말씀해주세요</div>
+      <div class="phrase-zh2">请说慢一点</div>
+      <div class="phrase-pin2">qǐng shuō màn yī diǎn · 칭슈오 만이디엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请说慢一点')">🔊</button>
+  </div>
+
+  <!-- 길 묻기 -->
+  <div class="phrase-group-label">🗺️ 길 묻기</div>
+  <div class="phrase-card" onclick="speak('洗手间在哪里')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">화장실 어디예요?</div>
+      <div class="phrase-zh2">洗手间在哪里?</div>
+      <div class="phrase-pin2">xǐ shǒu jiān zài nǎ lǐ · 시쇼우지엔 짜이날리</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('洗手间在哪里')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('地铁站在哪里')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">지하철역 어디예요?</div>
+      <div class="phrase-zh2">地铁站在哪里?</div>
+      <div class="phrase-pin2">dì tiě zhàn zài nǎ lǐ · 띠티에짠 짜이날리</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('地铁站在哪里')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('你会说英语吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">영어 할 줄 아세요?</div>
+      <div class="phrase-zh2">你会说英语吗?</div>
+      <div class="phrase-pin2">nǐ huì shuō yīng yǔ ma · 니후이 슈오 잉위마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('你会说英语吗')">🔊</button>
+  </div>
+
+  <!-- 응급 -->
+  <div class="phrase-group-label">🚨 응급</div>
+  <div class="phrase-card" onclick="speak('请送我去医院')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">병원 데려가주세요</div>
+      <div class="phrase-zh2">请送我去医院</div>
+      <div class="phrase-pin2">qǐng sòng wǒ qù yī yuàn · 칭쏭워취 이위엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请送我去医院')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('有韩语翻译吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">한국어 통역 가능한가요?</div>
+      <div class="phrase-zh2">有韩语翻译吗?</div>
+      <div class="phrase-pin2">yǒu hán yǔ fān yì ma · 요우한위판이마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('有韩语翻译吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我有过敏')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">알레르기가 있어요</div>
+      <div class="phrase-zh2">我有过敏</div>
+      <div class="phrase-pin2">wǒ yǒu guò mǐn · 워요우 궈민</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我有过敏')">🔊</button>
+  </div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+<div id="sec-checklist" class="section">
+  <div class="sec-header">
+    <div class="sec-title">출국 전 체크리스트</div>
+    <div class="sec-desc">탭하면 체크돼요</div>
+  </div>
+
+  <div id="check-progress" style="margin-bottom: 1.25rem;">
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width:0%"></div></div>
+    <div id="progress-label" class="progress-label">0 / 0 완료</div>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">📄 서류·결제</div>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">여권 (만료일 6개월 이상)</div><div class="check-sub">사진 백업도 클라우드에</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">중국 비자 또는 144시간 무비자 확인</div><div class="check-sub">왕복 항공권 + 제3국행 조건</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">알리페이 또는 위챗페이 카드 등록</div><div class="check-sub">출국 전 필수. 도착 후엔 늦음</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">현금 ¥500–1,000</div><div class="check-sub">노점·소액 결제용</div></div>
+    </label>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">📱 앱 설치</div>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">VPN 앱 (출국 전 필수 설치)</div><div class="check-sub">중국 내에선 다운로드 안 됨. ExpressVPN/NordVPN 등</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">AMap (高德地图) 설치</div><div class="check-sub">중국 지도 표준. 구글맵보다 정확</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">파파고 오프라인 팩 다운로드</div><div class="check-sub">중국어 오프라인 번역</div></div>
+    </label>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">📡 통신</div>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">eSIM 또는 로밍 신청</div><div class="check-sub">한국 로밍이 편함. 중국 유심은 VPN 우회 필요</div></div>
+    </label>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">🎒 짐</div>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">충전기·보조배터리 (100Wh 이하)</div><div class="check-sub">기내 반입 제한 확인</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">접이 우산</div><div class="check-sub">5월 초 강수 가능</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">가벼운 자켓</div><div class="check-sub">아침저녁 18°C 내외</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">편한 운동화</div><div class="check-sub">하루 1만보 이상 걷는 일정</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">상비약 (소화제·진통제·지사제)</div><div class="check-sub">기름진 음식 대비</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">물티슈·휴지</div><div class="check-sub">현지 화장실 휴지 없는 곳 많음</div></div>
+    </label>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">📸 출발 직전</div>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">여권 사진 클라우드 백업</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">호텔 한자 주소 캡처 (오프라인 보관)</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">항공권 e-티켓 캡처</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">긴급 연락처 보호자와 공유</div></div>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"></div>
+      <div><div class="check-label">온라인 체크인 완료</div><div class="check-sub">출발 24시간 전부터 가능</div></div>
+    </label>
+  </div>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div id="sec-tips" class="section">
+  <div class="sec-header">
+    <div class="sec-title">실전 팁</div>
+  </div>
+
+  <div class="notice">
+    <b>학생 단체 여행 주의</b> 자유시간에는 반드시 2인 이상 이동하고, 미아 방지를 위해 호텔 주소 한자를 항상 소지해요.
+  </div>
+
+  <div class="tip-item">
+    <div class="tip-icon">💳</div>
+    <div class="tip-content">
+      <div class="tip-title">결제</div>
+      <div class="tip-desc">알리페이·위챗페이에 한국 비자/마스터 카드 등록. 현금은 ¥500(약 9.8만원) 정도면 3박 4일 충분해요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🔒</div>
+    <div class="tip-content">
+      <div class="tip-title">VPN</div>
+      <div class="tip-desc">구글·인스타그램·카카오톡 사진 전송이 중국 내에서 막혀요. 출국 전에 반드시 설치. 중국 도착 후엔 다운로드 불가해요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🗺️</div>
+    <div class="tip-content">
+      <div class="tip-title">지도</div>
+      <div class="tip-desc">구글맵은 중국에서 부정확해요. AMap(高德地图) 추천. App Store에서 "Amap" 검색하면 영문 글로벌 버전 설치 가능해요. 이 앱의 지도 버튼은 모두 AMap 링크예요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🚕</div>
+    <div class="tip-content">
+      <div class="tip-title">택시</div>
+      <div class="tip-desc">디디(滴滴) 앱이 표준. 호텔 주소 한자를 캡처해두고 영문 인터페이스로 설정해두면 편해요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🚇</div>
+    <div class="tip-content">
+      <div class="tip-title">지하철</div>
+      <div class="tip-desc">1회권 ¥3–7 (585–1,365원). Apple Pay에 「上海公共交通卡」를 등록하면 한국 카드로 자동 결제할 수 있어요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🌡️</div>
+    <div class="tip-content">
+      <div class="tip-title">날씨</div>
+      <div class="tip-desc">5월 22–28℃, 습도 높음. 가벼운 자켓 + 접이 우산 필수. 오후 소나기 잦아요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🛂</div>
+    <div class="tip-content">
+      <div class="tip-title">비자</div>
+      <div class="tip-desc">한국 여권 144시간 무비자 환승 가능 (왕복 항공권 + 제3국 출국 조건). 일반 관광이면 30일 비자가 필요해요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">📱</div>
+    <div class="tip-content">
+      <div class="tip-title">예약 앱</div>
+      <div class="tip-desc">「대중점평(大众点评)」이 식당 예약·리뷰·줄서기 표준 앱이에요. 영문 모드 지원해요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🔌</div>
+    <div class="tip-content">
+      <div class="tip-title">전압</div>
+      <div class="tip-desc">220V 50Hz, A/C/I 플러그 혼용. 한국 멀티탭을 그대로 사용할 수 있어요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🙏</div>
+    <div class="tip-content">
+      <div class="tip-title">매너</div>
+      <div class="tip-desc">줄 서기 문화가 약해요. 적당히 끼어드는 게 현지 룰이에요. 식당에서 큰 소리로 이야기하는 것도 자연스러워요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">🚽</div>
+    <div class="tip-content">
+      <div class="tip-title">화장실</div>
+      <div class="tip-desc">휴지 없는 곳이 많아요. 항상 휴지나 물티슈를 챙겨 다녀요. 깨끗한 화장실은 백화점·호텔 로비예요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">💰</div>
+    <div class="tip-content">
+      <div class="tip-title">흥정</div>
+      <div class="tip-desc">예원·톈쯔팡 시장에서 처음 부르는 가격의 30–50%로 흥정할 수 있어요. 백화점·체인점은 정찰제예요.</div>
+    </div>
+  </div>
+  <div class="tip-item">
+    <div class="tip-icon">✈️</div>
+    <div class="tip-content">
+      <div class="tip-title">귀국일 주의</div>
+      <div class="tip-desc">5월 15일은 노동절 연휴 마지막 날이에요. 공항 보안검색이 평소보다 길어질 수 있어서 출발 3시간 이상 전 도착을 권장해요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CAUTION ===== -->
+<div id="sec-caution" class="section">
+  <div class="sec-header">
+    <div class="sec-title">현수막·단체 사진 주의사항</div>
+    <div class="sec-desc">중국 법률상 실제 위험이 있어요</div>
+  </div>
+
+  <div class="verdict-box">
+    <div class="verdict-title">핵심 결론</div>
+    <div class="verdict-body">
+      중국에서 현수막을 펼치고 단체 사진을 찍는 행위는 <b>허가 없는 집회 또는 공공질서 교란</b>으로 해석될 수 있어요. 외국인은 벌금·구류에 더해 추방까지 가능하므로, <b>현수막은 사용하지 않는 것</b>이 가장 안전해요.
+    </div>
+  </div>
+
+  <div class="caution-block">
+    <div class="caution-block-header">
+      <div class="caution-block-icon">📜</div>
+      <div class="caution-block-title">집회·행진·시위법</div>
+    </div>
+    <div class="caution-block-body">
+      <p>공공장소에서 다수인이 의사를 표현하는 행위는 사전 신청·허가가 필요해요. 현수막을 들고 단체로 사진을 찍는 행위도 집회로 간주될 수 있고, 허가 없으면 경찰이 즉시 해산·구류 조치를 취할 수 있어요.
+      <a class="law-ref" href="https://flk.npc.gov.cn/detail2.html?MmM5MDlmZGQ2NzhiZjE3OTAxNjc4YmY2YTk4YTA0ZGQ=" target="_blank" rel="noopener">📄 원문</a></p>
+    </div>
+  </div>
+
+  <div class="caution-block">
+    <div class="caution-block-header">
+      <div class="caution-block-icon">🚔</div>
+      <div class="caution-block-title">치안관리처벌법</div>
+    </div>
+    <div class="caution-block-body">
+      <p>공공질서를 해치는 행위에 경고·벌금·행정구류 처벌이 가능해요. 외국인은 동일 처벌에 더해 출국명령·추방이 추가될 수 있어요.
+      <a class="law-ref" href="https://flk.npc.gov.cn/detail2.html?ZmYwODBiZGQ2NzhiZjE3OTAxNjc4YmY5NDY5MDA1YWY=" target="_blank" rel="noopener">📄 원문</a></p>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <div class="do-box-title">✅ 안전한 행동</div>
+      <ul>
+        <li>소규모로 흩어져 자연스럽게 촬영</li>
+        <li>현수막 없이 기념 사진</li>
+        <li>가이드 허가 확인 후 단체 촬영</li>
+        <li>제지 시 즉시 응하기</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <div class="dont-box-title">🚫 피해야 할 행동</div>
+      <ul>
+        <li>현수막 펼치고 단체 사진</li>
+        <li>정치적 문구가 있는 소품</li>
+        <li>공공기관·군시설 근처 집단 행동</li>
+        <li>제지 시 항의·저항</li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- ===== GROUP ===== -->
+<div id="sec-group" class="section">
+  <div class="sec-header">
+    <div class="sec-title">모둠 명단</div>
+    <div class="sec-desc">여량고등학교 모둠 구성이에요</div>
+  </div>
+
+    <div class="modum-card">
+      <div class="modum-header">
+        <div class="modum-title">1모둠</div>
+        <div>
+          <div class="modum-teacher-label">담당교사</div>
+          <div class="modum-teacher">정민수 · 박은지 · 김민성</div>
+        </div>
+      </div>
+      <div class="modum-members">
+        <span class="member-chip">호원기</span>
+        <span class="member-chip">박예주</span>
+        <span class="member-chip">김지원</span>
+        <span class="member-chip">송은서</span>
+        <span class="member-chip">문의환</span>
+        <span class="member-chip">호원진</span>
+      </div>
+    </div>
+
+    <div class="modum-card">
+      <div class="modum-header">
+        <div class="modum-title">2모둠</div>
+        <div>
+          <div class="modum-teacher-label">담당교사</div>
+          <div class="modum-teacher">변상주 · 김영복</div>
+        </div>
+      </div>
+      <div class="modum-members">
+        <span class="member-chip">김소민</span>
+        <span class="member-chip">김수현</span>
+        <span class="member-chip">박예솔</span>
+        <span class="member-chip">박휘용</span>
+        <span class="member-chip">안기찬</span>
+        <span class="member-chip">윤태원</span>
+      </div>
+    </div>
+</div>
+
+<!-- ===== ROOM ===== -->
+<div id="sec-room" class="section">
+  <div class="sec-header">
+    <div class="sec-title">방 배정 (2인 1실)</div>
+    <div class="sec-desc">학교별로 탭을 눌러 확인해요</div>
+  </div>
+
+  <div class="room-school-tabs">
+    <button class="room-school-btn active" onclick="showRoomGroup('hs', this)">여량고등학교</button>
+    <button class="room-school-btn" onclick="showRoomGroup('ms', this)">여량중학교</button>
+    <button class="room-school-btn" onclick="showRoomGroup('teacher', this)">인솔교사</button>
+  </div>
+
+  <!-- 고등학교 -->
+  <div id="room-hs" class="room-school-panel active">
+    <div class="room-section-label">1학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 1학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">호원기</span>
+        <span class="room-chip">호원진</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 1·2학년</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">송은서</span>
+        <span class="room-chip">박예주</span>
+      </div>
+    </div>
+
+    <div class="room-section-label">2학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 2학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김지원</span>
+        <span class="room-chip">문의환</span>
+      </div>
+    </div>
+
+    <div class="room-section-label">3학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 3학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">박휘용</span>
+        <span class="room-chip">윤태원</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 3학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김수현</span>
+        <span class="room-chip">안기찬</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">고등학교 3학년</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김소민</span>
+        <span class="room-chip">박예솔</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 중학교 -->
+  <div id="room-ms" class="room-school-panel">
+    <div class="room-section-label">1학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 1학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김도영</span>
+        <span class="room-chip">김동기(교사)</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 1학년</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김지현</span>
+        <span class="room-chip">심은서</span>
+        <span class="room-chip">문평안</span>
+      </div>
+    </div>
+
+    <div class="room-section-label">2학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 2학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">장주혁</span>
+        <span class="room-chip">전지우</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 2학년</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">호은혜</span>
+        <span class="room-chip">서유주</span>
+      </div>
+    </div>
+
+    <div class="room-section-label">3학년</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 3학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">김동현</span>
+        <span class="room-chip">이성훈</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 3학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">남현식</span>
+        <span class="room-chip">박준범</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">중학교 3학년</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip">백하성</span>
+        <span class="room-chip">문지환</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 인솔교사 -->
+  <div id="room-teacher" class="room-school-panel">
+    <div class="room-section-label">여량고등학교</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip teacher">김영복</span>
+        <span class="room-chip teacher">김민성</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip teacher">변상주</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip teacher">박은지</span>
+        <span class="room-chip teacher">황혜정</span>
+      </div>
+    </div>
+
+    <div class="room-section-label">여량중학교</div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip teacher">정민수</span>
+        <span class="room-chip teacher">이두호</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사</span>
+        <span class="room-gender female">여</span>
+      </div>
+      <div class="room-members">
+        <span class="room-chip teacher">정신혜</span>
+        <span class="room-chip teacher">심기숙</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WEATHER ===== -->
+<div id="sec-weather" class="section">
+  <div class="sec-header">
+    <div class="sec-title">상하이 날씨</div>
+    <div class="sec-desc">여행 기간 실시간 예보 (Open-Meteo 기상 데이터)</div>
+  </div>
+  <div id="weather-updated" class="weather-updated"></div>
+  <div id="weather-content">
+    <div class="weather-loading">날씨 데이터를 불러오는 중이에요...</div>
+  </div>
+  <button class="weather-refresh-btn" onclick="loadWeather()">↻ 날씨 새로고침</button>
+</div>
+
+<!-- ===== EMERGENCY ===== -->
+<div id="sec-emergency" class="section">
+  <div class="sec-header">
+    <div class="sec-title">긴급 연락처</div>
+    <div class="sec-desc">탭하면 바로 전화 연결돼요</div>
+  </div>
+
+  <div class="emg-notice">
+    <b>사고 발생 시 순서</b> ① 경찰(110) 또는 구급(120) 신고 → ② 인솔 교사에게 즉시 연락 → ③ 주상하이 한국 총영사관 연락
+  </div>
+
+  <div class="emg-grid">
+    <a class="emg-card full" href="tel:+8613156282085">
+      <div class="emg-icon">🧭</div>
+      <div class="emg-info">
+        <div class="emg-name">현지 여행사</div>
+        <div class="emg-number">+86 131-5628-2085</div>
+      </div>
+    </a>
+
+    <a class="emg-card full" href="tel:+8613816509503">
+      <div class="emg-icon">🆘</div>
+      <div class="emg-info">
+        <div class="emg-name">긴급연락전화 (사건사고·24시간)</div>
+        <div class="emg-number">+86 138-1650-9503</div>
+      </div>
+    </a>
+
+    <a class="emg-card full" href="tel:+82232100404">
+      <div class="emg-icon">🏛️</div>
+      <div class="emg-info">
+        <div class="emg-name">영사안전콜센터 (서울·24시간)</div>
+        <div class="emg-number">+82 2-3210-0404</div>
+      </div>
+    </a>
+
+    <a class="emg-card full" href="tel:+862162955000">
+      <div class="emg-icon">🇰🇷</div>
+      <div class="emg-info">
+        <div class="emg-name">주상하이 한국 총영사관</div>
+        <div class="emg-number">+86 21-6295-5000</div>
+      </div>
+    </a>
+
+    <a class="emg-card" href="tel:110">
+      <div class="emg-icon">🚔</div>
+      <div class="emg-info">
+        <div class="emg-name">경찰</div>
+        <div class="emg-number">110</div>
+      </div>
+    </a>
+
+    <a class="emg-card" href="tel:120">
+      <div class="emg-icon">🚑</div>
+      <div class="emg-info">
+        <div class="emg-name">구급</div>
+        <div class="emg-number">120</div>
+      </div>
+    </a>
+
+    <a class="emg-card" href="tel:119">
+      <div class="emg-icon">🚒</div>
+      <div class="emg-info">
+        <div class="emg-name">소방</div>
+        <div class="emg-number">119</div>
+      </div>
+    </a>
+
+    <a class="emg-card full" href="tel:+862125099999">
+      <div class="emg-icon">🏨</div>
+      <div class="emg-info">
+        <div class="emg-name">위즈덤로즈호텔 (숙소)</div>
+        <div class="emg-number">+86 21-2509-9999</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="notice">
+    중국 내 로밍 전화로 110·120·119 신고 가능해요. 한국어 통역 연결은 주상하이 총영사관(+86 21-6295-5000)에 요청하세요.
+  </div>
+</div>
+
+<!-- ===== MAP ===== -->
+<div id="sec-map" class="section">
+  <div class="sec-header">
+    <div class="sec-title">주요 방문지 지도</div>
+    <div class="sec-desc">탭하면 AMap(高德地图)으로 바로 연결돼요</div>
+  </div>
+
+  <div class="notice" style="margin-bottom:1rem;">
+    AMap 앱이 없으면 모바일 웹으로 열려요. 앱 설치를 권장해요 (App Store: "Amap").
+  </div>
+
+  <div class="map-category-label">🏛️ 역사 탐방 (5/12 공동)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=大韩民国临时政府旧址&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon red">🇰🇷</div>
+      <div style="flex:1">
+        <div class="map-place-name">대한민국 임시정부 청사</div>
+        <div class="map-place-zh">大韩民国临时政府旧址</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市黄浦区马当路306弄4号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=鲁迅公园&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon red">🌸</div>
+      <div style="flex:1">
+        <div class="map-place-name">홍구공원 (매헌기념관)</div>
+        <div class="map-place-zh">鲁迅公园·梅轩纪念馆</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市虹口区四川北路2288号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=东方明珠广播电视塔&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon gold">🗼</div>
+      <div style="flex:1">
+        <div class="map-place-name">동방명주타워</div>
+        <div class="map-place-zh">东方明珠广播电视塔</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区世纪大道1号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=外滩&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon blue">🌃</div>
+      <div style="flex:1">
+        <div class="map-place-name">와이탄 (황포강 유람)</div>
+        <div class="map-place-zh">外滩</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市黄浦区中山东一路</div>
+  </a>
+
+  <div class="map-category-label">🐠 고1·2 (5/13)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=上海海洋水族馆&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon blue">🐠</div>
+      <div style="flex:1">
+        <div class="map-place-name">상하이 오션 아쿠아리움</div>
+        <div class="map-place-zh">上海海洋水族馆</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区陆家嘴环路1388号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=百联ZX创趣场&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon purple">🎌</div>
+      <div style="flex:1">
+        <div class="map-place-name">바이롄ZX 창취창</div>
+        <div class="map-place-zh">百联ZX创趣场</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市黄浦区西藏中路268号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=豫园&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon gold">🏮</div>
+      <div style="flex:1">
+        <div class="map-place-name">예원</div>
+        <div class="map-place-zh">豫园</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市黄浦区安仁街218号</div>
+  </a>
+
+  <div class="map-category-label">🦀 고3 (5/13)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=田子坊&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon purple">🎨</div>
+      <div style="flex:1">
+        <div class="map-place-name">티엔즈팡</div>
+        <div class="map-place-zh">田子坊</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市黄浦区泰康路210弄</div>
+  </a>
+
+  <div class="map-category-label">🦁 고1·2 (5/14)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=上海野生动物园&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon green">🦁</div>
+      <div style="flex:1">
+        <div class="map-place-name">상하이 야생 동물원</div>
+        <div class="map-place-zh">上海野生动物园</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区南六公路178号</div>
+  </a>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=上海迪士尼小镇&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon gold">🏰</div>
+      <div style="flex:1">
+        <div class="map-place-name">상하이 디즈니타운</div>
+        <div class="map-place-zh">上海迪士尼小镇</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区川沙新镇申迪西路57号</div>
+  </a>
+
+  <div class="map-category-label">🏛️ 고3 (5/14)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=武康大楼&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon purple">🏛️</div>
+      <div style="flex:1">
+        <div class="map-place-name">우캉맨션</div>
+        <div class="map-place-zh">武康大楼</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市徐汇区淮海中路1850号</div>
+  </a>
+
+  <div class="map-category-label">🏰 중학교 (5/14)</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=上海迪士尼乐园&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon gold">🏰</div>
+      <div style="flex:1">
+        <div class="map-place-name">상하이 디즈니랜드</div>
+        <div class="map-place-zh">上海迪士尼乐园</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区川沙新镇申迪西路57号</div>
+  </a>
+
+  <div class="map-category-label">🏨 숙소</div>
+
+  <a class="map-place-card" href="https://uri.amap.com/search?query=宣秋路699号&city=上海" target="_blank">
+    <div class="map-place-header">
+      <div class="map-place-icon blue">🏨</div>
+      <div style="flex:1">
+        <div class="map-place-name">위즈덤로즈호텔</div>
+        <div class="map-place-zh">上海市浦东新区宣秋路699号1栋</div>
+      </div>
+      <div class="map-open-btn">지도 열기</div>
+    </div>
+    <div class="map-place-addr">上海市浦东新区宣秋路699号1栋</div>
+  </a>
+</div>
+
+<!-- ===== EXCHANGE ===== -->
+<div id="sec-exchange" class="section">
+  <div class="sec-header">
+    <div class="sec-title">환율 계산기</div>
+    <div class="sec-desc">위안(¥) ↔ 원(₩) 실시간 계산</div>
+  </div>
+
+  <div class="exchange-box">
+    <div class="exchange-rate-display">
+      <div class="exchange-rate-main">¥1 = <span id="rate-display">195</span>원</div>
+      <div class="exchange-rate-sub" id="rate-updated">기준 환율 적용 중</div>
+    </div>
+
+    <div class="exchange-inputs">
+      <div class="exchange-input-wrap">
+        <div class="exchange-label">위안 (¥)</div>
+        <input class="exchange-input" id="cny-input" type="number" inputmode="decimal" placeholder="0" oninput="calcFromCny()">
+      </div>
+      <div class="exchange-arrow">⇄</div>
+      <div class="exchange-input-wrap">
+        <div class="exchange-label">원 (₩)</div>
+        <input class="exchange-input" id="krw-input" type="number" inputmode="decimal" placeholder="0" oninput="calcFromKrw()">
+      </div>
+    </div>
+
+    <div class="exchange-quick">
+      <span style="font-size:0.68rem;color:rgba(255,255,255,0.4);align-self:center;">빠른 입력</span>
+      <button class="exchange-quick-btn" onclick="setQuick(10)">¥10</button>
+      <button class="exchange-quick-btn" onclick="setQuick(50)">¥50</button>
+      <button class="exchange-quick-btn" onclick="setQuick(100)">¥100</button>
+      <button class="exchange-quick-btn" onclick="setQuick(200)">¥200</button>
+      <button class="exchange-quick-btn" onclick="setQuick(500)">¥500</button>
+    </div>
+  </div>
+
+  <div class="sec-header" style="margin-top:0.25rem;">
+    <div class="sec-title" style="font-size:1rem;">여행 물가 참고</div>
+  </div>
+  <div class="exchange-ref-grid">
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">편의점 물</div>
+      <div class="exchange-ref-value">¥3–5</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">헤이티 음료</div>
+      <div class="exchange-ref-value">¥25–38</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">샤오롱바오 1롱</div>
+      <div class="exchange-ref-value">¥30–60</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">지하철 1회</div>
+      <div class="exchange-ref-value">¥3–7</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">미니소 소품</div>
+      <div class="exchange-ref-value">¥10–50</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">택시 기본</div>
+      <div class="exchange-ref-value">¥14~</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">편의점 컵라면</div>
+      <div class="exchange-ref-value">¥8–15</div>
+    </div>
+    <div class="exchange-ref-item">
+      <div class="exchange-ref-label">기념품 냉장고 자석</div>
+      <div class="exchange-ref-value">¥10–30</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<!-- FOOTER -->
+<div style="text-align: center; padding: 2rem 1.25rem; font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 1rem;">
+  여량중학교 + 여량고등학교 · 2026 상하이 국외테마학습여행<br>
+  <span style="font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;">2026.05.12 – 05.15</span>
+</div>
+
+<script>
+// ── Section switcher ──
+function showSection(name, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+  if (name === 'weather') loadWeather();
+  if (name === 'exchange') loadExchangeRate();
+}
+
+// ── Day switcher ──
+let currentDay = 1;
+function showDay(n) {
+  document.querySelectorAll('.day-tab').forEach((t, i) => t.classList.toggle('active', i === n - 1));
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('day' + n).classList.add('active');
+  currentDay = n;
+}
+
+// ── Group switcher ──
+function showGroup(day, group, btn) {
+  const panel = document.getElementById('day' + day);
+  panel.querySelectorAll('.group-panel').forEach(p => p.classList.remove('active'));
+  panel.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('day' + day + '-' + group).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── Copy ──
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    const orig = btn.textContent;
+    btn.textContent = '✓ 복사됨'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── Knowledge toggle ──
+function toggleKnowledge(id) {
+  const box = document.getElementById(id);
+  const btn = box.previousElementSibling;
+  if (box.style.display === 'none') {
+    box.style.display = 'block';
+    btn.textContent = '📖 배경지식 접기';
+  } else {
+    box.style.display = 'none';
+    btn.textContent = '📖 관람 전 배경지식 보기';
+  }
+}
+
+// ── Room group tab ──
+function showRoomGroup(name, btn) {
+  document.querySelectorAll('.room-school-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.room-school-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('room-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── School group tab ──
+function showSchoolGroup(name, btn) {
+  document.querySelectorAll('.group-school-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.group-school-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('group-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── Exchange ──
+let currentRate = 195;
+
+async function loadExchangeRate() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/CNY');
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data.rates && data.rates.KRW) {
+      currentRate = Math.round(data.rates.KRW * 10) / 10;
+      document.getElementById('rate-display').textContent = currentRate.toFixed(1);
+      const d = new Date();
+      document.getElementById('rate-updated').textContent =
+        `실시간 환율 · ${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')} 기준`;
+    }
+  } catch(e) {
+    document.getElementById('rate-updated').textContent = '기준 환율 적용 중 (¥1 = 195원)';
+  }
+}
+
+function calcFromCny() {
+  const cny = parseFloat(document.getElementById('cny-input').value);
+  if (!isNaN(cny)) {
+    document.getElementById('krw-input').value = Math.round(cny * currentRate);
+  } else {
+    document.getElementById('krw-input').value = '';
+  }
+}
+
+function calcFromKrw() {
+  const krw = parseFloat(document.getElementById('krw-input').value);
+  if (!isNaN(krw)) {
+    document.getElementById('cny-input').value = (krw / currentRate).toFixed(2);
+  } else {
+    document.getElementById('cny-input').value = '';
+  }
+}
+
+function setQuick(cny) {
+  document.getElementById('cny-input').value = cny;
+  calcFromCny();
+}
+
+// ── Speech ──
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'zh-CN';
+  utter.rate = 0.85;
+  utter.pitch = 1;
+
+  // zh-CN 음성 찾기
+  const voices = window.speechSynthesis.getVoices();
+  const zhVoice = voices.find(v => v.lang === 'zh-CN') ||
+                  voices.find(v => v.lang.startsWith('zh'));
+  if (zhVoice) utter.voice = zhVoice;
+
+  window.speechSynthesis.speak(utter);
+}
+
+// 음성 목록 미리 로드
+window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+// ── Weather ──
+const TRIP_DATES = ['2026-05-12', '2026-05-13', '2026-05-14', '2026-05-15'];
+const DAY_LABELS = ['제1일 · 5/12 (화)', '제2일 · 5/13 (수)', '제3일 · 5/14 (목)', '제4일 · 5/15 (금)'];
+const DAY_SHORT = ['화', '수', '목', '금'];
+
+// 상하이 5월 중순 평년 기후 기반 기본값
+const CLIMATE_BASE = [
+  { tMax: 25, tMin: 18, rain: 45, wind: 14, uv: 7, code: 2 },
+  { tMax: 26, tMin: 18, rain: 40, wind: 13, uv: 7, code: 1 },
+  { tMax: 26, tMin: 19, rain: 50, wind: 15, uv: 6, code: 3 },
+  { tMax: 25, tMin: 18, rain: 40, wind: 13, uv: 7, code: 1 },
+];
+
+function weatherIcon(code) {
+  if (code === 0) return '☀️';
+  if (code <= 2) return '⛅';
+  if (code === 3) return '☁️';
+  if (code <= 49) return '🌫️';
+  if (code <= 69) return '🌦️';
+  if (code <= 79) return '🌨️';
+  if (code <= 84) return '🌧️';
+  if (code <= 99) return '⛈️';
+  return '🌤️';
+}
+
+function weatherDesc(code) {
+  if (code === 0) return '맑음';
+  if (code === 1) return '대체로 맑음';
+  if (code === 2) return '구름 조금';
+  if (code === 3) return '흐림';
+  if (code <= 49) return '안개';
+  if (code <= 69) return '비';
+  if (code <= 79) return '눈';
+  if (code <= 84) return '소나기';
+  if (code <= 99) return '뇌우';
+  return '–';
+}
+
+async function loadWeather() {
+  const el = document.getElementById('weather-content');
+  const upd = document.getElementById('weather-updated');
+  el.innerHTML = '<div class="weather-loading">날씨 데이터를 불러오는 중이에요...</div>';
+
+  let days = CLIMATE_BASE.map((d, i) => ({ ...d, date: TRIP_DATES[i], label: DAY_LABELS[i], isLive: false }));
+  let sourceNote = '상하이 5월 평년 기후 기반';
+
+  try {
+    // 오늘로부터 16일 이내면 실제 예보 시도
+    const today = new Date();
+    const tripStart = new Date('2026-05-12');
+    const diffDays = Math.ceil((tripStart - today) / 86400000);
+
+    if (diffDays <= 16 && diffDays >= -1) {
+      const url = 'https://api.open-meteo.com/v1/forecast' +
+        '?latitude=31.2304&longitude=121.4737' +
+        '&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,uv_index_max' +
+        '&timezone=Asia%2FShanghai' +
+        '&forecast_days=16';
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        const d = data.daily;
+        let liveCount = 0;
+        TRIP_DATES.forEach((date, i) => {
+          const idx = d.time.indexOf(date);
+          if (idx !== -1) {
+            days[i] = {
+              date,
+              label: DAY_LABELS[i],
+              tMax: Math.round(d.temperature_2m_max[idx]),
+              tMin: Math.round(d.temperature_2m_min[idx]),
+              rain: d.precipitation_probability_max[idx],
+              wind: Math.round(d.windspeed_10m_max[idx]),
+              uv: d.uv_index_max[idx] ?? '–',
+              code: d.weathercode[idx],
+              isLive: true,
+            };
+            liveCount++;
+          }
+        });
+        if (liveCount > 0) sourceNote = '실시간 기상 예보';
+      }
+    }
+  } catch(e) { /* 평년 기후 데이터로 fallback */ }
+
+  // 렌더링
+  let html = `<div class="notice" style="margin-bottom:0.85rem;background:#E8F5E9;border-color:#A5D6A7;color:#1B5E20;">
+    📡 ${sourceNote} · 상하이 (31.2°N, 121.5°E)
+  </div>`;
+
+  html += '<div class="weather-grid">';
+  days.forEach((d) => {
+    html += `
+      <div class="weather-card">
+        <div class="weather-date">${d.date}</div>
+        <div class="weather-day">${d.label}</div>
+        <div class="weather-icon">${weatherIcon(d.code)}</div>
+        <div class="weather-temp">${d.tMax}°</div>
+        <div class="weather-range">최저 ${d.tMin}° / 최고 ${d.tMax}°</div>
+        <div class="weather-desc">${weatherDesc(d.code)}</div>
+        <div style="display:flex;justify-content:center;gap:0.6rem;margin-top:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.7rem;color:var(--muted)">🌧️ ${d.rain}%</span>
+          <span style="font-size:0.7rem;color:var(--muted)">💨 ${d.wind}km/h</span>
+          <span style="font-size:0.7rem;color:var(--muted)">🔆 UV ${d.uv}</span>
+        </div>
+      </div>`;
+  });
+  html += '</div>';
+
+  html += `<div class="card">
+    <div class="card-title">옷차림 팁</div>
+    <div class="card-body" style="margin-top:0.4rem;">5월 상하이는 22–28°C로 덥고 습해요. 반팔 기본에 가벼운 긴팔 하나 챙기고, 소나기 대비 접이 우산은 필수예요. UV 지수가 높으니 선크림도 꼭 바르세요.</div>
+  </div>`;
+
+  if (sourceNote.includes('평년')) {
+    html += `<div class="notice" style="margin-top:0.5rem;">
+      여행 날짜까지 시간이 남아 현재는 평년 기후 데이터를 보여줘요. 여행이 가까워지면 실시간 예보로 자동 전환돼요.
+    </div>`;
+  }
+
+  el.innerHTML = html;
+  const now = new Date();
+  upd.textContent = `마지막 업데이트 ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+}
+
+// ── Checklist ──
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  updateProgress();
+}
+function updateProgress() {
+  const all = document.querySelectorAll('.check-item');
+  const done = document.querySelectorAll('.check-item.checked');
+  const pct = all.length ? Math.round(done.length / all.length * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = done.length + ' / ' + all.length + ' 완료';
+}
+updateProgress();
+
+// ── Scroll top ──
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY > 300);
+});
+</script>
+</body>
+</html>
