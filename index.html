@@ -1126,6 +1126,27 @@ body {
 }
 .emg-notice b { color: var(--gold); }
 
+/* ── ADDR COPY BTN ── */
+.addr-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  margin-left: 0.3rem;
+  background: #FFF8E1;
+  border: 1px solid #FFE082;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #F57F17;
+  cursor: pointer;
+  font-family: 'Pretendard', sans-serif;
+  transition: background 0.15s;
+}
+.addr-copy-btn:active { background: #FFECB3; }
+.addr-copy-btn.copied { background: #E8F5E9; border-color: #A5D6A7; color: #2E7D32; }
+
 /* ── MAP LINK BTN ── */
 .map-link-btn {
   display: inline-flex;
@@ -1380,7 +1401,7 @@ body {
   <div class="hero-meta">
     <span class="meta-chip">✈️ OZ363/362</span>
     <span class="meta-chip">🏨 위즈덤로즈호텔</span>
-    <span class="meta-chip">💱 <b>¥1 ≈ 195원</b></span>
+    <span class="meta-chip">💱 <b>¥1 ≈ 200원</b></span>
     <span class="meta-chip">⏰ 한국 -1h</span>
   </div>
 </div>
@@ -1436,12 +1457,26 @@ body {
     </div>
 
     <div class="timeline">
-      <div class="tl-item gold">
+      <div class="tl-item">
         <div class="tl-time">03:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">학교 도착</div>
+        </div>
+      </div>
+      <div class="tl-item gold">
+        <div class="tl-time">03:30</div>
         <div class="tl-dot"></div>
         <div class="tl-body">
           <div class="tl-label">학교 출발</div>
           <div class="tl-desc">국내 버스 → 인천공항 이동</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">07:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🍚 조식 · 공항 근처 한식당</div>
         </div>
       </div>
       <div class="tl-item">
@@ -1450,6 +1485,13 @@ body {
         <div class="tl-body">
           <div class="tl-label">인천공항 출발 ✈️ OZ363</div>
           <div class="tl-desc">아시아나항공 인천 → 상하이 푸동</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">🍱 중식 · 기내식</div>
         </div>
       </div>
       <div class="tl-item gold">
@@ -1550,7 +1592,7 @@ body {
         <div class="tl-time">저녁</div>
         <div class="tl-dot"></div>
         <div class="tl-body">
-          <div class="tl-label">🍽️ 석식</div>
+          <div class="tl-label">🍽️ 석식 · 상해요리</div>
         </div>
       </div>
       <div class="tl-item gold">
@@ -1594,6 +1636,7 @@ body {
             <div class="tl-label">호텔 출발 → 상하이 오션 아쿠아리움</div>
             <div class="tl-desc">이동 50–60분</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1603,6 +1646,7 @@ body {
             <div class="tl-label">🐠 상하이 오션 아쿠아리움</div>
             <div class="tl-desc">아시아 최대급 아쿠아리움 관람. 약 3시간.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5010,31.2413&name=%E4%B8%8A%E6%B5%B7%E6%B5%B7%E6%B4%8B%E6%B0%B4%E6%97%8F%E9%A6%86&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区陆家嘴环路1388号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1611,7 +1655,9 @@ body {
           <div class="tl-body">
             <div class="tl-label">루자쭈이역 → 난징동루역 이동</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4994,31.2393&name=%E9%99%86%E5%AE%B6%E5%98%B4%E7%AB%99&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 루자쭈이역</a>
+            <button class="addr-copy-btn" onclick="copyAddr('陆家嘴地铁站', this)">📋 주소복사</button>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4814,31.2358&name=%E5%8D%97%E4%BA%AC%E4%B8%9C%E8%B7%AF%E7%AB%99&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 난징동루역</a>
+            <button class="addr-copy-btn" onclick="copyAddr('南京东路地铁站', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1621,6 +1667,7 @@ body {
             <div class="tl-label">🥟 동북인가 점심 식사</div>
             <div class="tl-desc">东北人家饺子坊 · 13:15까지</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4780,31.2358&name=%E4%B8%9C%E5%8C%97%E4%BA%BA%E5%AE%B6%E9%A5%BA%E5%AD%90%E5%9D%8A&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('东北人家(中外运大厦店)', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1629,6 +1676,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">🛍️ 미니소 (1시간) 4층</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4748,31.2338&name=%E5%90%8D%E5%88%9B%E4%BC%98%E5%93%81IP%E4%B9%90%E5%9B%AD(%E5%85%A8%E7%90%83%E5%A3%B9%E5%8F%B7%E5%BA%97)&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('名创优品IP乐园(全球壹号店)', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1638,6 +1686,7 @@ body {
             <div class="tl-label">🎌 바이롄ZX 창취창 (2시간)</div>
             <div class="tl-desc">百联ZX创趣场 6층 애니메이션 · 일본 IP 팝업, 피규어, 아트토이</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4742,31.2294&name=%E7%99%BE%E8%81%94ZX%E5%88%9B%E8%B6%A3%E5%9C%BA&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区南京东路340-372号百联ZX创趣场', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1647,6 +1696,7 @@ body {
             <div class="tl-label">🥟 라이라이 샤오롱바오 석식</div>
             <div class="tl-desc">莱莱小笼包乔艾本店 · 18:15까지</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4750,31.2370&name=%E8%8E%B1%E8%8E%B1%E5%B0%8F%E7%AC%BC%E5%8C%85%E4%B9%94%E8%89%BE%E6%9C%AC%E5%BA%97&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区天津路506号莱莱小笼包', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item gold">
@@ -1656,6 +1706,7 @@ body {
             <div class="tl-label">🏮 예원 관람</div>
             <div class="tl-desc">1559년 명대 정원 야경 관람. 약 1시간 25분.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4920,31.2269&name=%E8%B1%AB%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('豫园老街279号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1664,6 +1715,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">예원 → 호텔 출발 (21:00 도착)</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
       </div>
@@ -1683,6 +1735,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1692,6 +1745,7 @@ body {
             <div class="tl-label">🦀 장씨네 게살국수 (1시간)</div>
             <div class="tl-desc">庄氏隆兴·非遗蟹点 난징동루점 · 上海首店</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4748,31.2358&name=%E5%BA%84%E6%B0%8F%E9%9A%86%E5%85%B4%C2%B7%E9%9D%9E%E9%81%97%E8%9F%B9%E7%82%B9&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区浙江中路441号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1701,6 +1755,7 @@ body {
             <div class="tl-label">🧋 헤이티 (40분)</div>
             <div class="tl-desc">喜茶 상하이 신세계성점</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4762,31.2342&name=%E5%96%9C%E8%8C%B6%EF%BC%88%E4%B8%8A%E6%B5%B7%E6%96%B0%E4%B8%96%E7%95%8C%E5%9F%8E%E5%BA%97%EF%BC%89&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区南京东路835号8FG4号铺', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1710,6 +1765,7 @@ body {
             <div class="tl-label">🥐 릴리안 베이커리 (20분)</div>
             <div class="tl-desc">莉莲 신세계성점</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4750,31.2340&name=%E8%8E%89%E8%8E%B2%EF%BC%88%E6%96%B0%E4%B8%96%E7%95%8C%E5%9F%8E%E5%BA%97%EF%BC%89&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('莉莲(新世界城店)', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1719,6 +1775,7 @@ body {
             <div class="tl-label">🎌 바이롄ZX 창취창 (2시간)</div>
             <div class="tl-desc">百联ZX创趣场 · 6층 애니메이션</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4742,31.2294&name=%E7%99%BE%E8%81%94ZX%E5%88%9B%E8%B6%A3%E5%9C%BA&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区南京东路340-372号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1727,6 +1784,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">🛍️ 미니소 (1시간)</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4748,31.2338&name=%E5%90%8D%E5%88%9B%E4%BC%98%E5%93%81IP%E4%B9%90%E5%9B%AD(%E5%85%A8%E7%90%83%E5%A3%B9%E5%8F%B7%E5%BA%97)&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('名创优品IP乐园(全球壹号店)', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1736,6 +1794,7 @@ body {
             <div class="tl-label">🦞 홍쿠이지아 석식 (1시간)</div>
             <div class="tl-desc">红盔甲·小龙虾 인민광장점 · 가재 요리 전문</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4840,31.2265&name=%E7%BA%A2%E7%9B%94%E7%94%B2%C2%B7%E5%B0%8F%E9%BE%99%E8%99%BE%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区金陵东路502号亚龙国际广场3楼', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item gold">
@@ -1745,6 +1804,7 @@ body {
             <div class="tl-label">🌃 와이탄 야경 구경 (2시간)</div>
             <div class="tl-desc">황푸강 서안 야경 산책. 조명 풀가동 19:30–22:00.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4907,31.2397&name=%E5%A4%96%E6%BB%A9&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区中山东二路1号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1753,6 +1813,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">와이탄 → 호텔 (21:00 도착)</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
       </div>
@@ -1854,6 +1915,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1863,6 +1925,7 @@ body {
             <div class="tl-label">🦁 상하이 야생 동물원 (5시간)</div>
             <div class="tl-desc">아시아 최대급 동물원. 사파리 버스, 판다, 코끼리 포함.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.6566,31.0896&name=%E4%B8%8A%E6%B5%B7%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海野生动物园1号停车场', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1879,6 +1942,7 @@ body {
             <div class="tl-label">🏰 상하이 디즈니타운 (3시간)</div>
             <div class="tl-desc">迪士尼小镇地面停车场(入口) · 쇼핑·레스토랑·엔터테인먼트</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.6697,31.1508&name=%E4%B8%8A%E6%B5%B7%E8%BF%AA%E5%A3%AB%E5%B0%BC%E5%B0%8F%E9%95%87&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('迪士尼小镇地面停车场(入口)', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1896,7 +1960,9 @@ body {
             <div class="tl-label">호텔 복귀 또는 비스터빌리지 아울렛</div>
             <div class="tl-desc">21:00 호텔 도착</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.6720,31.1620&name=%E4%B8%8A%E6%B5%B7%E6%AF%94%E6%96%AF%E7%89%B9%E5%A5%A5%E7%89%B9%E8%8E%B1%E8%B4%AD%E4%B8%AD%E5%BF%83&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 비스터빌리지 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('OT另茶(上海比斯特店)', this)">📋 주소복사</button>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
       </div>
@@ -1916,6 +1982,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1925,6 +1992,7 @@ body {
             <div class="tl-label">🎨 티엔즈팡 (2시간)</div>
             <div class="tl-desc">1930년대 시쿠먼 골목 개조 갤러리·카페·소품샵 거리. 칭지 핸드크림 구매 포인트.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4677,31.2126&name=%E7%94%B0%E5%AD%90%E5%9D%8A&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区上海市黄浦区南京东路66号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1934,6 +2002,7 @@ body {
             <div class="tl-label">🍢 헌지우이치엔 일월광점 점심 (1시간 20분)</div>
             <div class="tl-desc">很久以前羊肉串(打浦桥日月光店) · 양꼬치 전문</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4677,31.2126&name=%E5%BE%88%E4%B9%85%E4%BB%A5%E5%89%8D%E7%BE%8A%E8%82%89%E4%B8%B2(%E6%89%93%E6%B5%A6%E6%A1%A5%E6%97%A5%E6%9C%88%E5%85%89%E5%BA%97)&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区徐家汇路618号1F-CG17-18室', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -1943,6 +2012,7 @@ body {
             <div class="tl-label">🏛️ 우캉맨션 + 우캉루 (2시간)</div>
             <div class="tl-desc">武康大楼 · 1924년 노르망디식 아파트. 플라타너스 가로수 골목 산책.</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4477,31.2049&name=%E6%AD%A6%E5%BA%B7%E5%A4%A7%E6%A5%BC&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市徐汇区湖南路街道淮海中路1850号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1952,6 +2022,7 @@ body {
             <div class="tl-label">🍵 점도덕 신천지점 석식 (1시간)</div>
             <div class="tl-desc">点都德(环宇荟店) · 광식 딤섬 전문</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4718,31.2200&name=%E7%82%B9%E9%83%BD%E5%BE%B7(%E7%8E%AF%E5%AE%87%E8%8D%9F%E5%BA%97)&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区黄陂南路838弄环宇荟B1层B125-1-3、B153-1-2单元', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1960,6 +2031,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">🍸 더루프 (25분)</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4733,31.2147&name=%E9%A9%AC%E5%BD%93%E8%B7%AF458%E5%BC%84&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区马当路458弄1-36号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item gold">
@@ -1969,6 +2041,7 @@ body {
             <div class="tl-label">🏮 예원 야경 (1시간 40분)</div>
             <div class="tl-desc">上海豫园 · 야간 조명과 함께 명대 정원 산책</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.4920,31.2269&name=%E8%B1%AB%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 지도 보기</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市黄浦区福佑路168号', this)">📋 주소복사</button>
           </div>
         </div>
         <div class="tl-item">
@@ -1977,6 +2050,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">예원 → 호텔 (22:00 도착)</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
       </div>
@@ -2140,7 +2214,7 @@ body {
   <div class="info-grid">
     <div class="info-cell">
       <div class="info-cell-label">환율</div>
-      <div class="info-cell-value">¥1 ≈ 195원</div>
+      <div class="info-cell-value">¥1 ≈ 200원</div>
       <div class="info-cell-sub">기준율</div>
     </div>
     <div class="info-cell">
@@ -2282,6 +2356,89 @@ body {
       <div class="phrase-pin2">duō shǎo qián · 뚜어샤오치엔</div>
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('多少钱')">🔊</button>
+  </div>
+
+  <!-- 쇼핑 -->
+  <div class="phrase-group-label">🛍️ 쇼핑</div>
+  <div class="phrase-card" onclick="speak('这个多少钱')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">이거 얼마예요?</div>
+      <div class="phrase-zh2">这个多少钱?</div>
+      <div class="phrase-pin2">zhè ge duō shǎo qián · 쩌거 뚜어샤오치엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('这个多少钱')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('太贵了')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">너무 비싸요</div>
+      <div class="phrase-zh2">太贵了</div>
+      <div class="phrase-pin2">tài guì le · 타이꿰이러</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('太贵了')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('便宜一点可以吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">좀 깎아주세요</div>
+      <div class="phrase-zh2">便宜一点可以吗?</div>
+      <div class="phrase-pin2">pián yi yī diǎn kě yǐ ma · 피엔이 이디엔 커이마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('便宜一点可以吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('打折吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">할인해주세요</div>
+      <div class="phrase-zh2">打折吗?</div>
+      <div class="phrase-pin2">dǎ zhé ma · 따쩌마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('打折吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我买两个，能便宜吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">두 개 살게요, 싸게 해줄 수 있어요?</div>
+      <div class="phrase-zh2">我买两个，能便宜吗?</div>
+      <div class="phrase-pin2">wǒ mǎi liǎng ge, néng pián yi ma · 워마이량거, 넝피엔이마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我买两个，能便宜吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('有没有大一点的')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">더 큰 거 있어요?</div>
+      <div class="phrase-zh2">有没有大一点的?</div>
+      <div class="phrase-pin2">yǒu méi yǒu dà yī diǎn de · 요우메이요우 따이디엔더</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('有没有大一点的')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('有没有其他颜色')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">다른 색상 있어요?</div>
+      <div class="phrase-zh2">有没有其他颜色?</div>
+      <div class="phrase-pin2">yǒu méi yǒu qí tā yán sè · 요우메이요우 치타옌써</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('有没有其他颜色')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('可以试一试吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">입어봐도 돼요? / 써봐도 돼요?</div>
+      <div class="phrase-zh2">可以试一试吗?</div>
+      <div class="phrase-pin2">kě yǐ shì yī shì ma · 커이 스이스마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('可以试一试吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我不要了，谢谢')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">안 살게요, 괜찮아요</div>
+      <div class="phrase-zh2">我不要了，谢谢</div>
+      <div class="phrase-pin2">wǒ bú yào le, xiè xiè · 워부야오러, 씨에씨에</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我不要了，谢谢')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('可以扫码吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">QR코드 결제 되나요?</div>
+      <div class="phrase-zh2">可以扫码吗?</div>
+      <div class="phrase-pin2">kě yǐ sǎo mǎ ma · 커이 싸오마마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('可以扫码吗')">🔊</button>
   </div>
 
   <!-- 식당 -->
@@ -2970,8 +3127,7 @@ body {
         <span class="room-gender male">남</span>
       </div>
       <div class="room-members">
-        <span class="room-chip">김도영</span>
-        <span class="room-chip">김동기(교사)</span>
+        <span class="room-chip">김동기</span>
       </div>
     </div>
     <div class="room-card">
@@ -2989,12 +3145,13 @@ body {
     <div class="room-section-label">2학년</div>
     <div class="room-card">
       <div class="room-header">
-        <span class="room-grade">중학교 2학년</span>
+        <span class="room-grade">중학교 1·2학년</span>
         <span class="room-gender male">남</span>
       </div>
       <div class="room-members">
         <span class="room-chip">장주혁</span>
         <span class="room-chip">전지우</span>
+        <span class="room-chip">김도영</span>
       </div>
     </div>
     <div class="room-card">
@@ -3004,7 +3161,7 @@ body {
       </div>
       <div class="room-members">
         <span class="room-chip">호은혜</span>
-        <span class="room-chip">서유주</span>
+        <span class="room-chip">서윤주</span>
       </div>
     </div>
 
@@ -3061,6 +3218,7 @@ body {
       </div>
       <div class="room-members">
         <span class="room-chip teacher">변상주</span>
+        <span class="room-chip teacher">김동기</span>
       </div>
     </div>
     <div class="room-card">
@@ -3077,11 +3235,19 @@ body {
     <div class="room-section-label">여량중학교</div>
     <div class="room-card">
       <div class="room-header">
-        <span class="room-grade">인솔교사</span>
+        <span class="room-grade">인솔교사 (1인실)</span>
         <span class="room-gender male">남</span>
       </div>
       <div class="room-members">
         <span class="room-chip teacher">정민수</span>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-header">
+        <span class="room-grade">인솔교사 (1인실)</span>
+        <span class="room-gender male">남</span>
+      </div>
+      <div class="room-members">
         <span class="room-chip teacher">이두호</span>
       </div>
     </div>
@@ -3505,6 +3671,22 @@ function copyText(text, btn) {
   });
 }
 
+// ── Address Copy ──
+function copyAddr(addr, btn) {
+  navigator.clipboard.writeText(addr).then(() => {
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 주소복사'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = addr; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    btn.textContent = '✓ 복사됨';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 주소복사'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
 // ── Knowledge toggle ──
 function toggleKnowledge(id) {
   const box = document.getElementById(id);
@@ -3535,23 +3717,70 @@ function showSchoolGroup(name, btn) {
 }
 
 // ── Exchange ──
-let currentRate = 195;
+let currentRate = 200;
+let rateRefreshTimer = null;
 
 async function loadExchangeRate() {
-  try {
-    const res = await fetch('https://open.er-api.com/v6/latest/CNY');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    if (data.rates && data.rates.KRW) {
-      currentRate = Math.round(data.rates.KRW * 10) / 10;
-      document.getElementById('rate-display').textContent = currentRate.toFixed(1);
-      const d = new Date();
-      document.getElementById('rate-updated').textContent =
-        `실시간 환율 · ${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')} 기준`;
-    }
-  } catch(e) {
-    document.getElementById('rate-updated').textContent = '기준 환율 적용 중 (¥1 = 195원)';
+  const rateEl = document.getElementById('rate-display');
+  const updEl = document.getElementById('rate-updated');
+  if (rateEl) rateEl.textContent = '...';
+  if (updEl) updEl.textContent = '환율 불러오는 중...';
+
+  // 여러 무료 API 순서대로 시도
+  const apis = [
+    {
+      url: 'https://open.er-api.com/v6/latest/CNY',
+      parse: d => d.rates?.KRW
+    },
+    {
+      url: 'https://api.exchangerate-api.com/v4/latest/CNY',
+      parse: d => d.rates?.KRW
+    },
+    {
+      url: 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/cny.json',
+      parse: d => d.cny?.krw
+    },
+    {
+      url: 'https://latest.currency-api.pages.dev/v1/currencies/cny.json',
+      parse: d => d.cny?.krw
+    },
+    {
+      url: 'https://api.frankfurter.app/latest?from=CNY&to=KRW',
+      parse: d => d.rates?.KRW
+    },
+  ];
+
+  let success = false;
+  for (const api of apis) {
+    try {
+      const res = await fetch(api.url, { signal: AbortSignal.timeout(5000) });
+      if (!res.ok) continue;
+      const data = await res.json();
+      const krwRate = api.parse(data);
+      if (krwRate && krwRate > 100) {
+        currentRate = Math.round(krwRate * 10) / 10;
+        if (rateEl) rateEl.textContent = currentRate.toFixed(1);
+        const now = new Date();
+        const timeStr = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+        if (updEl) updEl.textContent = `실시간 환율 · ${timeStr} 기준`;
+        success = true;
+        break;
+      }
+    } catch(e) { continue; }
   }
+
+  if (!success) {
+    if (rateEl) rateEl.textContent = currentRate.toFixed(1);
+    if (updEl) updEl.textContent = `기준 환율 적용 중 (¥1 ≈ ${currentRate}원)`;
+  }
+
+  // 입력값이 있으면 재계산
+  const cnyVal = document.getElementById('cny-input')?.value;
+  if (cnyVal) calcFromCny();
+
+  // 5분마다 자동 갱신
+  if (rateRefreshTimer) clearTimeout(rateRefreshTimer);
+  rateRefreshTimer = setTimeout(loadExchangeRate, 5 * 60 * 1000);
 }
 
 function calcFromCny() {
