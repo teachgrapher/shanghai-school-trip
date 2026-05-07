@@ -1450,6 +1450,80 @@ body {
 }
 .scroll-top.visible { display: flex; }
 
+/* ── FAB ── */
+.fab-wrap {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.25rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.fab-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  transition: all 0.2s;
+}
+.fab-menu.hidden { display: none; }
+.fab-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  animation: fabIn 0.15s ease;
+}
+@keyframes fabIn {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fab-item-btn {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.22);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.fab-item-label {
+  background: rgba(26,26,46,0.9);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'Pretendard', sans-serif;
+  padding: 0.3rem 0.65rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.fab-main {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--red);
+  color: white;
+  border: none;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(200,16,46,0.4);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.fab-main.open {
+  background: var(--ink);
+  transform: rotate(45deg);
+}
+
 </style>
 </head>
 <body>
@@ -2897,13 +2971,6 @@ body {
       <div class="tip-desc">예원·톈쯔팡 시장에서 처음 부르는 가격의 30–50%로 흥정할 수 있어요. 백화점·체인점은 정찰제예요.</div>
     </div>
   </div>
-  <div class="tip-item">
-    <div class="tip-icon">✈️</div>
-    <div class="tip-content">
-      <div class="tip-title">귀국일 주의</div>
-      <div class="tip-desc">5월 15일은 노동절 연휴 마지막 날이에요. 공항 보안검색이 평소보다 길어질 수 있어서 출발 3시간 이상 전 도착을 권장해요.</div>
-    </div>
-  </div>
 </div>
 
 <!-- ===== CAUTION ===== -->
@@ -3518,6 +3585,25 @@ body {
 <!-- SCROLL TOP -->
 <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
+<!-- FAB -->
+<div class="fab-wrap">
+  <div class="fab-menu hidden" id="fab-menu">
+    <div class="fab-item" onclick="fabGo('emergency')">
+      <button class="fab-item-btn" style="background:#C8102E;">🚨</button>
+      <span class="fab-item-label">긴급 연락망</span>
+    </div>
+    <div class="fab-item" onclick="fabGo('exchange')">
+      <button class="fab-item-btn" style="background:#D4A847;">💱</button>
+      <span class="fab-item-label">환율 계산기</span>
+    </div>
+    <div class="fab-item" onclick="fabGo('phrase')">
+      <button class="fab-item-btn" style="background:#1B4F8A;">💬</button>
+      <span class="fab-item-label">여행 회화</span>
+    </div>
+  </div>
+  <button class="fab-main" id="fab-main-btn" onclick="toggleFab()">+</button>
+</div>
+
 <!-- FOOTER -->
 <div style="text-align: center; padding: 2rem 1.25rem; font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 1rem;">
   여량중학교 + 여량고등학교 · 2026 상하이 국외테마학습여행<br>
@@ -4090,6 +4176,28 @@ function updateProgress() {
   document.getElementById('progress-label').textContent = done.length + ' / ' + all.length + ' 완료';
 }
 updateProgress();
+
+// ── FAB ──
+let fabOpen = false;
+function toggleFab() {
+  fabOpen = !fabOpen;
+  document.getElementById('fab-menu').classList.toggle('hidden', !fabOpen);
+  document.getElementById('fab-main-btn').classList.toggle('open', fabOpen);
+}
+function fabGo(section) {
+  toggleFab();
+  // 해당 탭 버튼 찾아서 클릭
+  const btns = document.querySelectorAll('.nav-btn');
+  btns.forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${section}'`)) {
+      showSection(section, b);
+    }
+  });
+}
+// 다른 곳 터치 시 FAB 닫기
+document.addEventListener('click', e => {
+  if (fabOpen && !e.target.closest('.fab-wrap')) toggleFab();
+});
 
 // ── Scroll top ──
 window.addEventListener('scroll', () => {
