@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>2026 여량중고등학교 상하이 국외테마학습여행</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 :root {
   --red: #C8102E;
@@ -1126,6 +1128,64 @@ body {
 }
 .emg-notice b { color: var(--gold); }
 
+/* ── MAP TAB ── */
+.map-tab-btn {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.3rem;
+  font-size: 0.72rem;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  line-height: 1.3;
+}
+.map-tab-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
+}
+.map-place-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+.map-place-row:last-child { border-bottom: none; }
+.map-place-num {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.map-place-row-info { flex: 1; min-width: 0; }
+.map-place-row-name { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+.map-place-row-sub { font-size: 0.7rem; color: var(--muted); }
+.map-amap-btn {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #2E7D32;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: 'Pretendard', sans-serif;
+}
+
 /* ── ADDR COPY BTN ── */
 .addr-copy-btn {
   display: inline-flex;
@@ -1635,7 +1695,7 @@ body {
           <div class="tl-body">
             <div class="tl-label">호텔 출발 → 상하이 오션 아쿠아리움</div>
             <div class="tl-desc">이동 50–60분</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1714,7 +1774,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">예원 → 호텔 출발 (21:00 도착)</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1734,7 +1794,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1812,7 +1872,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">와이탄 → 호텔 (21:00 도착)</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1914,7 +1974,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1961,7 +2021,7 @@ body {
             <div class="tl-desc">21:00 호텔 도착</div>
             <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.6720,31.1620&name=%E4%B8%8A%E6%B5%B7%E6%AF%94%E6%96%AF%E7%89%B9%E5%A5%A5%E7%89%B9%E8%8E%B1%E8%B4%AD%E4%B8%AD%E5%BF%83&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 비스터빌리지 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('OT另茶(上海比斯特店)', this)">📋 주소복사</button>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -1981,7 +2041,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">호텔 출발</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -2049,7 +2109,7 @@ body {
           <div class="tl-dot"></div>
           <div class="tl-body">
             <div class="tl-label">예원 → 호텔 (22:00 도착)</div>
-            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
+            <a class="map-link-btn" href="https://uri.amap.com/marker?position=121.7248,31.0903&name=%EC%9C%84%EC%A6%88%EB%8D%A4%EB%A1%9C%EC%A6%88%ED%98%B8%ED%85%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">🗺️ 호텔 지도</a>
             <button class="addr-copy-btn" onclick="copyAddr('上海市浦东新区宣秋路699号1栋', this)">📋 주소복사</button>
           </div>
         </div>
@@ -3360,185 +3420,34 @@ body {
 </div>
 
 <!-- ===== MAP ===== -->
-<div id="sec-map" class="section">
-  <div class="sec-header">
-    <div class="sec-title">주요 방문지 지도</div>
-    <div class="sec-desc">탭하면 AMap(高德地图)으로 바로 연결돼요</div>
+<div id="sec-map" class="section" style="padding:0;">
+
+  <!-- 그룹 탭 -->
+  <div style="padding:1.25rem 1.25rem 0;">
+    <div class="sec-header">
+      <div class="sec-title">이동 동선 지도</div>
+      <div class="sec-desc">그룹별 탭을 눌러 동선을 확인해요</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.4rem;margin-bottom:0.75rem;" id="map-group-tabs">
+      <button class="map-tab-btn active" onclick="switchMapGroup('day12')" id="tab-day12">📅 5/12 공동</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('hs12_13')" id="tab-hs12_13">고1·2 (5/13)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('hs3_13')" id="tab-hs3_13">고3 (5/13)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('ms_13')" id="tab-ms_13">중학교 (5/13)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('hs12_14')" id="tab-hs12_14">고1·2 (5/14)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('hs3_14')" id="tab-hs3_14">고3 (5/14)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('ms_14')" id="tab-ms_14">중학교 (5/14)</button>
+      <button class="map-tab-btn" onclick="switchMapGroup('day15')" id="tab-day15">📅 5/15 귀국</button>
+    </div>
   </div>
 
-  <div class="notice" style="margin-bottom:1rem;">
-    AMap 앱이 없으면 모바일 웹으로 열려요. 앱 설치를 권장해요 (App Store: "Amap").
-  </div>
+  <!-- 지도 -->
+  <div id="leaflet-map" style="height:55vw;max-height:380px;width:100%;z-index:1;"></div>
 
-  <div class="map-category-label">🏛️ 역사 탐방 (5/12 공동)</div>
+  <!-- 범례 -->
+  <div id="map-legend" style="padding:0.85rem 1.25rem 0.5rem;"></div>
 
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4733,31.2147&name=%E5%A4%A7%E9%9F%A9%E6%B0%91%E5%9B%BD%E4%B8%B4%E6%97%B6%E6%94%BF%E5%BA%9C%E6%97%A7%E5%9D%80&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon red">🇰🇷</div>
-      <div style="flex:1">
-        <div class="map-place-name">대한민국 임시정부 청사</div>
-        <div class="map-place-zh">大韩民国临时政府旧址</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市黄浦区马当路306弄4号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4857,31.2689&name=%E9%B2%81%E8%BF%85%E5%85%AC%E5%9B%AD%C2%B7%E6%A2%85%E8%BD%A9%E7%BA%AA%E5%BF%B5%E9%A6%86&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon red">🌸</div>
-      <div style="flex:1">
-        <div class="map-place-name">홍구공원 (매헌기념관)</div>
-        <div class="map-place-zh">鲁迅公园·梅轩纪念馆</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市虹口区四川北路2288号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4998,31.2397&name=%E4%B8%9C%E6%96%B9%E6%98%8E%E7%8F%A0%E5%B9%BF%E6%92%AD%E7%94%B5%E8%A7%86%E5%A1%94&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon gold">🗼</div>
-      <div style="flex:1">
-        <div class="map-place-name">동방명주타워</div>
-        <div class="map-place-zh">东方明珠广播电视塔</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区世纪大道1号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4907,31.2397&name=%E5%A4%96%E6%BB%A9&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon blue">🌃</div>
-      <div style="flex:1">
-        <div class="map-place-name">와이탄 (황포강 유람)</div>
-        <div class="map-place-zh">外滩</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市黄浦区中山东一路</div>
-  </a>
-
-  <div class="map-category-label">🐠 고1·2 (5/13)</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.5010,31.2413&name=%E4%B8%8A%E6%B5%B7%E6%B5%B7%E6%B4%8B%E6%B0%B4%E6%97%8F%E9%A6%86&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon blue">🐠</div>
-      <div style="flex:1">
-        <div class="map-place-name">상하이 오션 아쿠아리움</div>
-        <div class="map-place-zh">上海海洋水族馆</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区陆家嘴环路1388号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4742,31.2294&name=%E7%99%BE%E8%81%94ZX%E5%88%9B%E8%B6%A3%E5%9C%BA&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon purple">🎌</div>
-      <div style="flex:1">
-        <div class="map-place-name">바이롄ZX 창취창</div>
-        <div class="map-place-zh">百联ZX创趣场</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市黄浦区西藏中路268号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4920,31.2269&name=%E8%B1%AB%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon gold">🏮</div>
-      <div style="flex:1">
-        <div class="map-place-name">예원</div>
-        <div class="map-place-zh">豫园</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市黄浦区安仁街218号</div>
-  </a>
-
-  <div class="map-category-label">🦀 고3 (5/13)</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4677,31.2126&name=%E7%94%B0%E5%AD%90%E5%9D%8A&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon purple">🎨</div>
-      <div style="flex:1">
-        <div class="map-place-name">티엔즈팡</div>
-        <div class="map-place-zh">田子坊</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市黄浦区泰康路210弄</div>
-  </a>
-
-  <div class="map-category-label">🦁 고1·2 (5/14)</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.6566,31.0896&name=%E4%B8%8A%E6%B5%B7%E9%87%8E%E7%94%9F%E5%8A%A8%E7%89%A9%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon green">🦁</div>
-      <div style="flex:1">
-        <div class="map-place-name">상하이 야생 동물원</div>
-        <div class="map-place-zh">上海野生动物园</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区南六公路178号</div>
-  </a>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.6697,31.1508&name=%E4%B8%8A%E6%B5%B7%E8%BF%AA%E5%A3%AB%E5%B0%BC%E5%B0%8F%E9%95%87&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon gold">🏰</div>
-      <div style="flex:1">
-        <div class="map-place-name">상하이 디즈니타운</div>
-        <div class="map-place-zh">上海迪士尼小镇</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区川沙新镇申迪西路57号</div>
-  </a>
-
-  <div class="map-category-label">🏛️ 고3 (5/14)</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.4477,31.2126&name=%E6%AD%A6%E5%BA%B7%E5%A4%A7%E6%A5%BC&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon purple">🏛️</div>
-      <div style="flex:1">
-        <div class="map-place-name">우캉맨션</div>
-        <div class="map-place-zh">武康大楼</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市徐汇区淮海中路1850号</div>
-  </a>
-
-  <div class="map-category-label">🏰 중학교 (5/14)</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.6580,31.1465&name=%E4%B8%8A%E6%B5%B7%E8%BF%AA%E5%A3%AB%E5%B0%BC%E4%B9%90%E5%9B%AD&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon gold">🏰</div>
-      <div style="flex:1">
-        <div class="map-place-name">상하이 디즈니랜드</div>
-        <div class="map-place-zh">上海迪士尼乐园</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区川沙新镇申迪西路57号</div>
-  </a>
-
-  <div class="map-category-label">🏨 숙소</div>
-
-  <a class="map-place-card" href="https://uri.amap.com/marker?position=121.5601,31.2289&name=%E5%AE%A3%E7%A7%8B%E8%B7%AF699%E5%8F%B7(%E4%BD%8F%E5%AE%BF)&src=youliang&coordinate=gaode&callnative=1" target="_blank">
-    <div class="map-place-header">
-      <div class="map-place-icon blue">🏨</div>
-      <div style="flex:1">
-        <div class="map-place-name">위즈덤로즈호텔</div>
-        <div class="map-place-zh">上海市浦东新区宣秋路699号1栋</div>
-      </div>
-      <div class="map-open-btn">지도 열기</div>
-    </div>
-    <div class="map-place-addr">上海市浦东新区宣秋路699号1栋</div>
-  </a>
+  <!-- 장소 목록 -->
+  <div id="map-place-list" style="padding:0 1.25rem 1.25rem;"></div>
 </div>
 
 <!-- ===== EXCHANGE ===== -->
@@ -3634,6 +3543,12 @@ function showSection(name, btn) {
   window.scrollTo(0, 0);
   if (name === 'weather') loadWeather();
   if (name === 'exchange') loadExchangeRate();
+  if (name === 'map') {
+    setTimeout(() => {
+      initLeafletMap();
+      if (leafletMap) leafletMap.invalidateSize();
+    }, 100);
+  }
 }
 
 // ── Day switcher ──
@@ -3669,6 +3584,216 @@ function copyText(text, btn) {
     btn.textContent = '✓ 복사됨'; btn.classList.add('copied');
     setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
   });
+}
+
+// ── Interactive Map ──
+let leafletMap = null;
+let mapLayers = [];
+
+const HOTEL = { lat: 31.2289, lon: 121.5601, name: '🏨 위즈덤로즈호텔', addr: '浦东新区宣秋路699号1栋' };
+
+const MAP_GROUPS = {
+  day12: {
+    label: '5/12 공동 일정',
+    color: '#8B2020',
+    places: [
+      { lat:31.1434, lon:121.8082, name:'①✈️ 상하이 푸동국제공항 도착', addr:'浦东新区迎宾大道6900号' },
+      { lat:31.2147, lon:121.4733, name:'②🇰🇷 임시정부 청사', addr:'黄浦区马当路306弄4号' },
+      { lat:31.2689, lon:121.4857, name:'③🌸 홍구공원·매헌기념관', addr:'虹口区四川北路2288号' },
+      { lat:31.2397, lon:121.4998, name:'④🗼 동방명주타워', addr:'浦东新区世纪大道1号' },
+      { lat:31.2397, lon:121.4907, name:'⑤🚢 황포강 유람·와이탄', addr:'黄浦区中山东一路' },
+      { lat:31.0903, lon:121.7248, name:'🏨 위즈덤로즈호텔 투숙', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  hs12_13: {
+    label: '고1·2학년 5/13',
+    color: '#1B4F8A',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.2413, lon:121.5010, name:'①🐠 오션 아쿠아리움', addr:'浦东新区陆家嘴环路1388号' },
+      { lat:31.2358, lon:121.4780, name:'②🥟 동북인가 점심', addr:'黄浦区中外运大厦店' },
+      { lat:31.2338, lon:121.4748, name:'③🛍️ 미니소', addr:'名创优品IP乐园(全球壹号店)' },
+      { lat:31.2294, lon:121.4742, name:'④🎌 바이롄ZX', addr:'黄浦区南京东路340-372号' },
+      { lat:31.2370, lon:121.4750, name:'⑤🥟 라이라이 샤오롱바오', addr:'黄浦区天津路506号' },
+      { lat:31.2269, lon:121.4920, name:'⑥🏮 예원', addr:'黄浦区豫园老街279号' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 귀환', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  hs3_13: {
+    label: '고3학년 5/13',
+    color: '#8B4513',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.2358, lon:121.4748, name:'①🦀 장씨네 게살국수', addr:'黄浦区浙江中路441号' },
+      { lat:31.2342, lon:121.4762, name:'②🧋 헤이티', addr:'黄浦区南京东路835号' },
+      { lat:31.2340, lon:121.4750, name:'③🥐 릴리안 베이커리', addr:'莉莲(新世界城店)' },
+      { lat:31.2294, lon:121.4742, name:'④🎌 바이롄ZX', addr:'黄浦区南京东路340-372号' },
+      { lat:31.2338, lon:121.4748, name:'⑤🛍️ 미니소', addr:'名创优品IP乐园(全球壹号店)' },
+      { lat:31.2265, lon:121.4840, name:'⑥🦞 홍쿠이지아', addr:'黄浦区金陵东路502号' },
+      { lat:31.2397, lon:121.4907, name:'⑦🌃 와이탄', addr:'黄浦区中山东二路1号' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 귀환', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  hs12_14: {
+    label: '고1·2학년 5/14',
+    color: '#1B4F8A',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.0545, lon:121.7160, name:'①🦁 야생 동물원', addr:'浦东新区南六公路178号' },
+      { lat:31.1508, lon:121.6697, name:'②🏰 디즈니타운', addr:'浦东新区申迪西路57号' },
+      { lat:31.1620, lon:121.6720, name:'③🛍️ 비스터빌리지 아울렛', addr:'OT另茶(上海比斯特店)' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 귀환', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  hs3_14: {
+    label: '고3학년 5/14',
+    color: '#8B4513',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.2126, lon:121.4677, name:'①🎨 티엔즈팡', addr:'黄浦区南京东路66号' },
+      { lat:31.2126, lon:121.4677, name:'②🍢 헌지우이치엔', addr:'黄浦区徐家汇路618号' },
+      { lat:31.2049, lon:121.4477, name:'③🏛️ 우캉맨션', addr:'徐汇区淮海中路1850号' },
+      { lat:31.2200, lon:121.4718, name:'④🍵 점도덕', addr:'黄浦区黄陂南路838弄' },
+      { lat:31.2147, lon:121.4733, name:'⑤🍸 더루프', addr:'黄浦区马当路458弄' },
+      { lat:31.2269, lon:121.4920, name:'⑥🏮 예원', addr:'黄浦区福佑路168号' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 귀환', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  ms_13: {
+    label: '중학교 5/13',
+    color: '#2E7D32',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.1140, lon:121.0660, name:'①🛶 주가각 수향마을', addr:'青浦区朱家角镇 (북대가 거리·운하유람)' },
+      { lat:31.1132, lon:121.0648, name:'②🏛️ 청상하이우정국', addr:'青浦区朱家角镇 漕河路清邮局' },
+      { lat:31.1128, lon:121.0672, name:'③🌉 방생교', addr:'青浦区朱家角镇 放生桥' },
+      { lat:31.2126, lon:121.4677, name:'④🎨 티엔즈팡', addr:'黄浦区泰康路210弄' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 투숙', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  ms_14: {
+    label: '중학교 5/14',
+    color: '#2E7D32',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.1465, lon:121.6580, name:'①🏰 상하이 디즈니랜드', addr:'浦东新区川沙新镇申迪西路57号' },
+      { lat:31.0903, lon:121.7248, name:'🏨 호텔 귀환', addr:'浦东新区宣秋路699号1栋' },
+    ]
+  },
+  hotel: {
+    label: '숙소·주요 거점',
+    color: '#2E7D32',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'🏨 위즈덤로즈호텔', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.2397, lon:121.4998, name:'🗼 동방명주타워', addr:'浦东新区世纪大道1号' },
+      { lat:31.2269, lon:121.4920, name:'🏮 예원', addr:'黄浦区豫园老街279号' },
+      { lat:31.2397, lon:121.4907, name:'🌃 와이탄', addr:'黄浦区中山东一路' },
+      { lat:31.2294, lon:121.4742, name:'🎌 바이롄ZX', addr:'黄浦区南京东路340-372号' },
+    ]
+  },
+  day15: {
+    label: '5/15 귀국 동선',
+    color: '#C8102E',
+    places: [
+      { lat:31.0903, lon:121.7248, name:'①🏨 위즈덤로즈호텔 출발', addr:'浦东新区宣秋路699号1栋' },
+      { lat:31.1434, lon:121.8082, name:'②✈️ 상하이 푸동국제공항', addr:'浦东新区迎宾大道6900号' },
+    ]
+  }
+};
+
+let currentMapGroup = 'day12';
+
+function initLeafletMap() {
+  if (leafletMap) return;
+  leafletMap = L.map('leaflet-map', { zoomControl: true, attributionControl: false }).setView([31.17, 121.60], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+  }).addTo(leafletMap);
+  renderMapGroup('day12');
+}
+
+function makeNumberIcon(num, color) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="background:${color};color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.35);font-family:Pretendard,sans-serif;">${num}</div>`,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13],
+    popupAnchor: [0, -14],
+  });
+}
+
+function renderMapGroup(groupKey) {
+  currentMapGroup = groupKey;
+  const group = MAP_GROUPS[groupKey];
+  if (!group || !leafletMap) return;
+
+  // 기존 레이어 제거
+  mapLayers.forEach(l => leafletMap.removeLayer(l));
+  mapLayers = [];
+
+  const latlngs = group.places.map(p => [p.lat, p.lon]);
+
+  // 동선 폴리라인
+  if (latlngs.length > 1) {
+    const line = L.polyline(latlngs, {
+      color: group.color,
+      weight: 3,
+      opacity: 0.75,
+      dashArray: '6,4'
+    }).addTo(leafletMap);
+    mapLayers.push(line);
+  }
+
+  // 마커
+  group.places.forEach((p, i) => {
+    const isHotel = p.name.includes('호텔');
+    const icon = isHotel
+      ? makeNumberIcon('H', '#2E7D32')
+      : makeNumberIcon(i, group.color);
+    const marker = L.marker([p.lat, p.lon], { icon })
+      .addTo(leafletMap)
+      .bindPopup(`<b style="font-family:Pretendard,sans-serif;font-size:13px;">${p.name}</b><br><span style="font-size:11px;color:#666;">${p.addr}</span>`, { maxWidth: 200 });
+    mapLayers.push(marker);
+  });
+
+  // 지도 뷰 맞춤
+  if (latlngs.length > 1) {
+    leafletMap.fitBounds(L.latLngBounds(latlngs), { padding: [30, 30] });
+  } else {
+    leafletMap.setView(latlngs[0], 14);
+  }
+
+  // 장소 목록 렌더
+  renderPlaceList(group);
+}
+
+function renderPlaceList(group) {
+  const el = document.getElementById('map-place-list');
+  if (!el) return;
+  let html = `<div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;font-weight:600;">${group.label} · ${group.places.length}개 장소</div>`;
+  group.places.forEach((p, i) => {
+    const isHotel = p.name.includes('호텔');
+    const numColor = isHotel ? '#2E7D32' : group.color;
+    const numLabel = isHotel ? 'H' : i;
+    const amapUrl = `https://uri.amap.com/marker?position=${p.lon},${p.lat}&name=${encodeURIComponent(p.name)}&src=youliang&coordinate=gaode&callnative=1`;
+    html += `<div class="map-place-row">
+      <div class="map-place-num" style="background:${numColor};">${numLabel}</div>
+      <div class="map-place-row-info">
+        <div class="map-place-row-name">${p.name}</div>
+        <div class="map-place-row-sub">${p.addr}</div>
+      </div>
+      <a class="map-amap-btn" href="${amapUrl}" target="_blank">AMap</a>
+    </div>`;
+  });
+  el.innerHTML = html;
+}
+
+function switchMapGroup(groupKey) {
+  document.querySelectorAll('.map-tab-btn').forEach(b => b.classList.remove('active'));
+  const tab = document.getElementById('tab-' + groupKey);
+  if (tab) tab.classList.add('active');
+  renderMapGroup(groupKey);
+  setTimeout(() => { if (leafletMap) leafletMap.invalidateSize(); }, 100);
 }
 
 // ── Address Copy ──
