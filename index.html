@@ -1571,7 +1571,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 0.75rem 0 0.5rem;
+    margin: 0.75rem 0.5rem 0.5rem 0;
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 2rem;
@@ -1585,6 +1585,98 @@ body {
   ">
     📸 사진 앨범 보기
   </a>
+  <button onclick="document.getElementById('album-guide-popup').style.display='flex'" style="
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 2rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    cursor: pointer;
+    font-family: 'Pretendard', sans-serif;
+  ">
+    📤 사진 올리는 방법
+  </button>
+
+  <!-- 앨범 업로드 가이드 팝업 -->
+  <div id="album-guide-popup" onclick="if(event.target===this)this.style.display='none'" style="
+    display:none; position:fixed; inset:0; z-index:999;
+    background:rgba(0,0,0,0.75);
+    align-items:center; justify-content:center; padding:1.25rem;
+  ">
+    <div style="
+      background:white; border-radius:1rem; padding:1.5rem;
+      width:100%; max-width:380px; position:relative;
+      max-height:85vh; overflow-y:auto;
+    ">
+      <button onclick="document.getElementById('album-guide-popup').style.display='none'" style="
+        position:absolute; top:1rem; right:1rem;
+        background:none; border:none; font-size:1.2rem; cursor:pointer; color:#888;
+      ">✕</button>
+      <div style="font-size:1rem; font-weight:800; color:#1A1A2E; margin-bottom:0.25rem;">📤 사진 앨범에 올리는 방법</div>
+      <div style="font-size:0.75rem; color:#8B7D6B; margin-bottom:1.25rem;">여행 중 찍은 사진을 공유 앨범에 업로드해요</div>
+
+      <div style="display:flex; flex-direction:column; gap:0.9rem;">
+
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <div style="width:1.6rem; height:1.6rem; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#D4A847; flex-shrink:0; margin-top:0.1rem;">1</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#1A1A2E; margin-bottom:0.2rem;">구글 포토 앱 설치</div>
+            <div style="font-size:0.78rem; color:#5D5D5D; line-height:1.6;">스마트폰에 <b>Google 포토</b> 앱을 설치해요. App Store(아이폰) 또는 Play 스토어(안드로이드)에서 "Google 포토"로 검색하면 돼요.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <div style="width:1.6rem; height:1.6rem; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#D4A847; flex-shrink:0; margin-top:0.1rem;">2</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#1A1A2E; margin-bottom:0.2rem;">구글 계정으로 로그인</div>
+            <div style="font-size:0.78rem; color:#5D5D5D; line-height:1.6;">Google 계정(Gmail)으로 로그인해요. 계정이 없으면 무료로 만들 수 있어요.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <div style="width:1.6rem; height:1.6rem; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#D4A847; flex-shrink:0; margin-top:0.1rem;">3</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#1A1A2E; margin-bottom:0.2rem;">공유 앨범 링크 열기</div>
+            <div style="font-size:0.78rem; color:#5D5D5D; line-height:1.6;">위의 <b>📸 사진 앨범 보기</b> 버튼을 눌러 앨범 링크를 열어요.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <div style="width:1.6rem; height:1.6rem; background:#1A1A2E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#D4A847; flex-shrink:0; margin-top:0.1rem;">4</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#1A1A2E; margin-bottom:0.2rem;">앨범 참여하기</div>
+            <div style="font-size:0.78rem; color:#5D5D5D; line-height:1.6;">앨범 화면에서 <b>"참여"</b> 또는 <b>"Join"</b> 버튼을 눌러요. 한 번만 누르면 이후엔 자동으로 연결돼요.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <div style="width:1.6rem; height:1.6rem; background:#C8102E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:white; flex-shrink:0; margin-top:0.1rem;">5</div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:#C8102E; margin-bottom:0.2rem;">사진 추가하기</div>
+            <div style="font-size:0.78rem; color:#5D5D5D; line-height:1.6;">앨범 화면 오른쪽 상단 <b>＋ (추가)</b> 버튼을 눌러 내 갤러리에서 사진을 골라 업로드해요. 여러 장을 한 번에 선택할 수 있어요.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:#FFF8E1; border:1px solid #FFE082; border-radius:0.5rem; padding:0.75rem; margin-top:1.25rem; font-size:0.75rem; color:#5D4037; line-height:1.6;">
+        💡 <b>참여 후엔 언제든지</b> Google 포토 앱 → 공유 탭에서 이 앨범을 찾아 사진을 추가할 수 있어요.
+      </div>
+
+      <button onclick="document.getElementById('album-guide-popup').style.display='none'" style="
+        width:100%; margin-top:1rem; background:#1A1A2E; color:#D4A847;
+        border:none; border-radius:0.6rem; padding:0.75rem;
+        font-size:0.85rem; font-weight:700; cursor:pointer;
+        font-family:'Pretendard',sans-serif;
+      ">확인</button>
+    </div>
+  </div>
   <div class="hero-sub">여량중학교 + 여량고등학교 · 2026.05.12–05.15</div>
   <div class="hero-meta">
     <span class="meta-chip">✈️ OZ363/362</span>
