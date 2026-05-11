@@ -1018,42 +1018,6 @@ body {
   margin-top: 0.75rem;
 }
 
-/* ── QUICK CARDS ── */
-.qcard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.65rem;
-  margin-bottom: 1rem;
-}
-.qcard {
-  background: var(--ink);
-  border-radius: 0.75rem;
-  padding: 1.1rem 0.85rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: background 0.15s, transform 0.1s;
-  min-height: 4.5rem;
-  border: 2px solid transparent;
-}
-.qcard:active { background: #2a2a4a; transform: scale(0.97); }
-.qcard-urgent {
-  border-color: #C8102E;
-  background: #2a0a0e;
-}
-.qcard-warn {
-  border-color: #D4A847;
-  background: #1e1800;
-}
-.qcard-ko {
-  font-size: 1rem;
-  font-weight: 700;
-  color: white;
-  line-height: 1.4;
-}
-
 /* ── PHRASE NEW ── */
 .phrase-group-label {
   font-size: 0.78rem;
@@ -2608,67 +2572,14 @@ body {
 <div id="sec-phrase" class="section">
   <div class="sec-header">
     <div class="sec-title">여행 회화 — 진짜 쓸 것만</div>
-    <div class="sec-desc">카드를 탭하면 중국어가 크게 보여요. 상대방에게 보여주세요.</div>
+    <div class="sec-desc">택시·식당·길묻기·응급. 큰 글씨로 보여주거나 🔊 눌러 음성 재생.</div>
   </div>
 
-  <!-- 팝업 -->
-  <div id="phrase-popup" onclick="closePopup()" style="
-    display:none; position:fixed; inset:0; z-index:999;
-    background:rgba(0,0,0,0.85);
-    align-items:center; justify-content:center; padding:1.5rem;
-    flex-direction:column; gap:1rem;
-  ">
-    <div style="background:white; border-radius:1rem; padding:2rem 1.5rem; width:100%; max-width:400px; text-align:center; position:relative;">
-      <div id="popup-ko" style="font-size:1.1rem; color:#8B7D6B; margin-bottom:1rem; font-weight:600;"></div>
-      <div id="popup-zh" style="font-size:2.8rem; font-weight:900; color:#C8102E; line-height:1.3; margin-bottom:0.75rem;"></div>
-      <div id="popup-pin" style="font-size:0.95rem; color:#8B7D6B; margin-bottom:1.5rem;"></div>
-      <button onclick="event.stopPropagation(); speakPopup()" style="
-        background:var(--ink); color:var(--gold); border:none; border-radius:2rem;
-        padding:0.7rem 2rem; font-size:1rem; font-weight:700;
-        font-family:'Pretendard',sans-serif; cursor:pointer; margin-bottom:0.5rem; width:100%;
-      ">🔊 발음 듣기</button>
-      <div style="font-size:0.75rem; color:#aaa; margin-top:0.25rem;">화면을 탭하면 닫혀요</div>
-    </div>
+  <div class="notice" style="margin-bottom:1rem;">
+    🔊 버튼을 누르면 중국어 발음이 재생돼요. 기기 볼륨을 확인해주세요.
   </div>
 
-  <!-- 긴급 카드 (크게, 강조) -->
-  <div style="font-size:0.72rem; font-weight:700; color:#C8102E; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.6rem;">🚨 긴급·자주 쓰는 표현</div>
-
-  <div class="qcard-grid">
-    <div class="qcard qcard-urgent" onclick="openPopup('길을 잃어버렸어요, 도와주세요!', '我迷路了，请帮帮我！', 'wǒ mí lù le, qǐng bāng bāng wǒ · 워미루러, 칭빵빵워')">
-      <div class="qcard-ko">길을 잃어버렸어요<br>도와주세요!</div>
-    </div>
-    <div class="qcard" onclick="openPopup('얼마예요?', '多少钱？', 'duō shǎo qián · 뚜어샤오치엔')">
-      <div class="qcard-ko">얼마예요?</div>
-    </div>
-    <div class="qcard" onclick="openPopup('대기 얼마나 걸려요?', '需要等多久？', 'xū yào děng duō jiǔ · 쉬야오 떵 뚜어쥬')">
-      <div class="qcard-ko">대기 얼마나<br>걸려요?</div>
-    </div>
-    <div class="qcard" onclick="openPopup('물 주세요', '请给我一杯水', 'qǐng gěi wǒ yī bēi shuǐ · 칭게이워 이뻬이슈이')">
-      <div class="qcard-ko">물 주세요</div>
-    </div>
-    <div class="qcard qcard-warn" onclick="openPopup('고수 빼주세요', '不要香菜', 'bú yào xiāng cài · 부야오 샹차이')">
-      <div class="qcard-ko">⚠️ 고수<br>빼주세요</div>
-    </div>
-    <div class="qcard" onclick="openPopup('잠시만요 / 천천히 말씀해주세요', '请说慢一点', 'qǐng shuō màn yī diǎn · 칭슈오 만이디엔')">
-      <div class="qcard-ko">잠시만요 /<br>천천히요</div>
-    </div>
-    <div class="qcard" onclick="openPopup('화장실 어디에요?', '洗手间在哪里？', 'xǐ shǒu jiān zài nǎ lǐ · 시쇼우지엔 짜이날리')">
-      <div class="qcard-ko">화장실<br>어디에요?</div>
-    </div>
-    <div class="qcard" onclick="openPopup('한국어 할 줄 아세요?', '你会说韩语吗？', 'nǐ huì shuō hán yǔ ma · 니후이슈오 한위마')">
-      <div class="qcard-ko">한국어<br>할 줄 아세요?</div>
-    </div>
-  </div>
-
-  <div class="divider" style="margin:1.5rem 0;"></div>
-
-  <!-- 기존 회화 목록 -->
-  <div class="sec-header" style="margin-bottom:0.75rem;">
-    <div class="sec-title" style="font-size:1rem;">전체 회화 목록</div>
-    <div class="sec-desc">🔊 버튼을 눌러 발음을 들어요</div>
-  </div>
-
+  <!-- 택시·디디 -->
   <div class="phrase-group-label">🚕 택시·디디</div>
   <div class="phrase-card" onclick="speak('请送我到这里')">
     <div class="phrase-card-body">
@@ -2694,6 +2605,8 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('多少钱')">🔊</button>
   </div>
+
+  <!-- 쇼핑 -->
   <div class="phrase-group-label">🛍️ 쇼핑</div>
   <div class="phrase-card" onclick="speak('这个多少钱')">
     <div class="phrase-card-body">
@@ -2727,6 +2640,22 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('打折吗')">🔊</button>
   </div>
+  <div class="phrase-card" onclick="speak('我买两个，能便宜吗')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">두 개 살게요, 싸게 해줄 수 있어요?</div>
+      <div class="phrase-zh2">我买两个，能便宜吗?</div>
+      <div class="phrase-pin2">wǒ mǎi liǎng ge, néng pián yi ma · 워마이량거, 넝피엔이마</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我买两个，能便宜吗')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('有没有大一点的')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">더 큰 거 있어요?</div>
+      <div class="phrase-zh2">有没有大一点的?</div>
+      <div class="phrase-pin2">yǒu méi yǒu dà yī diǎn de · 요우메이요우 따이디엔더</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('有没有大一点的')">🔊</button>
+  </div>
   <div class="phrase-card" onclick="speak('有没有其他颜色')">
     <div class="phrase-card-body">
       <div class="phrase-ko2">다른 색상 있어요?</div>
@@ -2737,7 +2666,7 @@ body {
   </div>
   <div class="phrase-card" onclick="speak('可以试一试吗')">
     <div class="phrase-card-body">
-      <div class="phrase-ko2">입어봐도/써봐도 돼요?</div>
+      <div class="phrase-ko2">입어봐도 돼요? / 써봐도 돼요?</div>
       <div class="phrase-zh2">可以试一试吗?</div>
       <div class="phrase-pin2">kě yǐ shì yī shì ma · 커이 스이스마</div>
     </div>
@@ -2747,7 +2676,7 @@ body {
     <div class="phrase-card-body">
       <div class="phrase-ko2">안 살게요, 괜찮아요</div>
       <div class="phrase-zh2">我不要了，谢谢</div>
-      <div class="phrase-pin2">wǒ bú yào le, xiè xiè · 워부야오러 씨에씨에</div>
+      <div class="phrase-pin2">wǒ bú yào le, xiè xiè · 워부야오러, 씨에씨에</div>
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('我不要了，谢谢')">🔊</button>
   </div>
@@ -2759,6 +2688,8 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('可以扫码吗')">🔊</button>
   </div>
+
+  <!-- 식당 -->
   <div class="phrase-group-label">🍜 식당</div>
   <div class="phrase-card" onclick="speak('请给我菜单')">
     <div class="phrase-card-body">
@@ -2800,11 +2731,51 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('我用支付宝付款')">🔊</button>
   </div>
+  <div class="phrase-card" onclick="speak('请给我发票')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">영수증 주세요</div>
+      <div class="phrase-zh2">请给我发票</div>
+      <div class="phrase-pin2">qǐng gěi wǒ fā piào · 칭게이워 파파오</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我发票')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('一共多少钱')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">얼마예요? (합계)</div>
+      <div class="phrase-zh2">一共多少钱?</div>
+      <div class="phrase-pin2">yī gòng duō shǎo qián · 이공 뚜어샤오치엔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('一共多少钱')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('需要等多久')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">대기 얼마나 걸려요?</div>
+      <div class="phrase-zh2">需要等多久?</div>
+      <div class="phrase-pin2">xū yào děng duō jiǔ · 쉬야오 떵 뚜어쥬</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('需要等多久')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我一杯水')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">물 한 잔 주세요 (따뜻한 물 기본)</div>
+      <div class="phrase-zh2">请给我一杯水</div>
+      <div class="phrase-pin2">qǐng gěi wǒ yī bēi shuǐ · 칭게이워 이뻬이슈이</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我一杯水')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('我要冰水')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">차가운 물 주세요</div>
+      <div class="phrase-zh2">我要冰水</div>
+      <div class="phrase-pin2">wǒ yào bīng shuǐ · 워야오 삥슈이</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('我要冰水')">🔊</button>
+  </div>
   <div class="phrase-card" onclick="speak('不要香菜')">
     <div class="phrase-card-body">
       <div class="phrase-ko2">고수 빼주세요 ⚠️ 필수</div>
       <div class="phrase-zh2">不要香菜</div>
-      <div class="phrase-pin2">bú yào xiāng cài · 부야오 샹차이</div>
+      <div class="phrase-pin2">bú yào xiāng cài · 부야오 상자이</div>
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('不要香菜')">🔊</button>
   </div>
@@ -2816,6 +2787,22 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('我对花生过敏')">🔊</button>
   </div>
+  <div class="phrase-card" onclick="speak('请给我筷子和勺子')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">젓가락 / 숟가락 주세요</div>
+      <div class="phrase-zh2">请给我筷子和勺子</div>
+      <div class="phrase-pin2">qǐng gěi wǒ kuài zi hé sháo zi · 칭게이워 콰이쯔 허 샤오쯔</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我筷子和勺子')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('请给我餐巾纸')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">냅킨 / 휴지 주세요</div>
+      <div class="phrase-zh2">请给我餐巾纸</div>
+      <div class="phrase-pin2">qǐng gěi wǒ cān jīn zhǐ · 칭게이워 찬진즈</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请给我餐巾纸')">🔊</button>
+  </div>
   <div class="phrase-card" onclick="speak('很好吃')">
     <div class="phrase-card-body">
       <div class="phrase-ko2">맛있어요</div>
@@ -2824,14 +2811,32 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('很好吃')">🔊</button>
   </div>
+  <div class="phrase-card" onclick="speak('请帮我打包')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">남은 거 포장해주세요</div>
+      <div class="phrase-zh2">请帮我打包</div>
+      <div class="phrase-pin2">qǐng bāng wǒ dǎ bāo · 칭빵워 따바오</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('请帮我打包')">🔊</button>
+  </div>
+  <div class="phrase-card" onclick="speak('再来一个')">
+    <div class="phrase-card-body">
+      <div class="phrase-ko2">하나 더 주세요</div>
+      <div class="phrase-zh2">再来一个</div>
+      <div class="phrase-pin2">zài lái yī gè · 짜이라이 이거</div>
+    </div>
+    <button class="speak-btn" onclick="event.stopPropagation();speak('再来一个')">🔊</button>
+  </div>
   <div class="phrase-card" onclick="speak('请说慢一点')">
     <div class="phrase-card-body">
-      <div class="phrase-ko2">천천히 말씀해주세요</div>
+      <div class="phrase-ko2">잠시만요 / 천천히 말씀해주세요</div>
       <div class="phrase-zh2">请说慢一点</div>
       <div class="phrase-pin2">qǐng shuō màn yī diǎn · 칭슈오 만이디엔</div>
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('请说慢一点')">🔊</button>
   </div>
+
+  <!-- 길 묻기 -->
   <div class="phrase-group-label">🗺️ 길 묻기</div>
   <div class="phrase-card" onclick="speak('洗手间在哪里')">
     <div class="phrase-card-body">
@@ -2857,6 +2862,8 @@ body {
     </div>
     <button class="speak-btn" onclick="event.stopPropagation();speak('你会说英语吗')">🔊</button>
   </div>
+
+  <!-- 응급 -->
   <div class="phrase-group-label">🚨 응급</div>
   <div class="phrase-card" onclick="speak('请送我去医院')">
     <div class="phrase-card-body">
@@ -2884,6 +2891,79 @@ body {
   </div>
 </div>
 
+<!-- ===== TIPS ===== -->
+<div id="sec-tips" class="section">
+  <div class="sec-header">
+    <div class="sec-title">실전 팁</div>
+  </div>
+  <div class="notice">
+    <b>학생 단체 여행 주의</b> 자유시간에는 반드시 2인 이상 이동하고, 미아 방지를 위해 호텔 주소 한자를 항상 소지해요.
+  </div>
+  <div class="tip-item"><div class="tip-icon">💳</div><div class="tip-content"><div class="tip-title">결제</div><div class="tip-desc">알리페이·위챗페이에 한국 비자/마스터 카드 등록. 현금은 ¥500(약 9.8만원) 정도면 3박 4일 충분해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🔒</div><div class="tip-content"><div class="tip-title">VPN</div><div class="tip-desc">구글·인스타그램·카카오톡 사진 전송이 중국 내에서 막혀요. 출국 전에 반드시 설치. 중국 도착 후엔 다운로드 불가해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🗺️</div><div class="tip-content"><div class="tip-title">지도</div><div class="tip-desc">구글맵은 중국에서 부정확해요. AMap(高德地图) 추천. App Store에서 "Amap" 검색하면 영문 글로벌 버전 설치 가능해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🚕</div><div class="tip-content"><div class="tip-title">택시</div><div class="tip-desc">디디(滴滴) 앱이 표준. 호텔 주소 한자를 캡처해두고 영문 인터페이스로 설정해두면 편해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🚇</div><div class="tip-content"><div class="tip-title">지하철</div><div class="tip-desc">1회권 ¥3–7 (585–1,365원). Apple Pay에 「上海公共交通卡」를 등록하면 한국 카드로 자동 결제할 수 있어요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🌡️</div><div class="tip-content"><div class="tip-title">날씨</div><div class="tip-desc">5월 22–28℃, 습도 높음. 가벼운 자켓 + 접이 우산 필수. 오후 소나기 잦아요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🛂</div><div class="tip-content"><div class="tip-title">비자</div><div class="tip-desc">한국 여권 144시간 무비자 환승 가능 (왕복 항공권 + 제3국 출국 조건). 일반 관광이면 30일 비자가 필요해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">📱</div><div class="tip-content"><div class="tip-title">예약 앱</div><div class="tip-desc">「대중점평(大众点评)」이 식당 예약·리뷰·줄서기 표준 앱이에요. 영문 모드 지원해요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🔌</div><div class="tip-content"><div class="tip-title">전압</div><div class="tip-desc">220V 50Hz, A/C/I 플러그 혼용. 한국 멀티탭을 그대로 사용할 수 있어요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🙏</div><div class="tip-content"><div class="tip-title">매너</div><div class="tip-desc">줄 서기 문화가 약해요. 적당히 끼어드는 게 현지 룰이에요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">🚽</div><div class="tip-content"><div class="tip-title">화장실</div><div class="tip-desc">휴지 없는 곳이 많아요. 항상 휴지나 물티슈를 챙겨 다녀요. 깨끗한 화장실은 백화점·호텔 로비예요.</div></div></div>
+  <div class="tip-item"><div class="tip-icon">💰</div><div class="tip-content"><div class="tip-title">흥정</div><div class="tip-desc">예원·톈쯔팡 시장에서 처음 부르는 가격의 30–50%로 흥정할 수 있어요. 백화점·체인점은 정찰제예요.</div></div></div>
+</div>
+<!-- ===== CAUTION ===== -->
+<div id="sec-caution" class="section">
+  <div class="sec-header">
+    <div class="sec-title">주의사항</div>
+    <div class="sec-desc">여행 중 꼭 알아둬야 할 내용이에요</div>
+  </div>
+  <div class="sec-title" style="font-size:1rem;margin-bottom:0.75rem;">🚨 안전 및 사기 주의</div>
+  <div class="notice" style="margin-bottom:0.75rem;">치안은 대체로 안전한 편이지만, 외국인을 노린 전형적인 수법들이 존재해요.</div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🍵</div><div class="caution-block-title">찻집·바가지 사기</div></div><div class="caution-block-body"><p>난징루·와이탄 등 관광지에서 젊은 중국인이 유창한 영어나 한국어로 접근해 "전통 찻집에 가자"거나 "학생인데 사진을 찍어달라"며 말을 건다면 99% 사기예요. 단호하게 거절하세요.</p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🚕</div><div class="caution-block-title">공식 교통수단 이용</div></div><div class="caution-block-body"><p>공항이나 역에서 호객 행위를 하는 개인 차량(나라시)은 절대 타지 마세요. 반드시 공식 택시 승강장을 이용하거나 호출 앱인 <b>디디추싱(Didi)</b>을 통해 차량을 부르는 것이 안전해요.</p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🛂</div><div class="caution-block-title">여권 휴대</div></div><div class="caution-block-body"><p>중국은 외국인의 신분증 휴대 검사가 불시로 이루어질 수 있어요. 외출 시에는 항상 여권 원본을 지참해야 하며, 호텔 체크인 시에도 반드시 필요해요.</p></div></div>
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:1rem;margin-bottom:0.75rem;">🧼 생활 및 위생 팁</div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">💧</div><div class="caution-block-title">음용수</div></div><div class="caution-block-body"><p>수돗물에 석회질이 많으므로 절대 그냥 마시지 마세요. 반드시 생수를 사서 마셔야 해요.</p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🚽</div><div class="caution-block-title">화장실</div></div><div class="caution-block-body"><p>공공화장실에 휴지가 없는 경우가 많으니 항상 휴대용 티슈를 챙기세요.</p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🌿</div><div class="caution-block-title">향신료 (고수)</div></div><div class="caution-block-body"><p>고수 향이 익숙하지 않다면 주문할 때 꼭 <b>"부야오 샹차이(不要香菜)"</b>라고 말하거나 회화 메뉴의 해당 문구를 보여주세요.</p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🚗</div><div class="caution-block-title">택시 뒷좌석 안전벨트</div></div><div class="caution-block-body"><p>상하이를 포함한 중국 대도시는 택시 뒷좌석 안전벨트 착용이 의무화되어 있어요. 탑승 즉시 벨트를 매세요.</p></div></div>
+  <div class="divider"></div>
+  <div class="sec-title" style="font-size:1rem;margin-bottom:0.75rem;">🚩 현수막·단체 사진 주의사항</div>
+  <div class="verdict-box"><div class="verdict-body">중국에서 현수막을 펼치고 단체 사진을 찍는 행위는 <b>허가 없는 집회 또는 공공질서 교란</b>으로 해석될 수 있어요. 외국인은 벌금·구류에 더해 추방까지 가능하므로, <b>현수막은 사용하지 않는 것</b>이 가장 안전해요.</div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">📜</div><div class="caution-block-title">집회·행진·시위법</div></div><div class="caution-block-body"><p>공공장소에서 다수인이 의사를 표현하는 행위는 사전 신청·허가가 필요해요. 현수막을 들고 단체로 사진을 찍는 행위도 집회로 간주될 수 있어요.<a class="law-ref" href="https://flk.npc.gov.cn/detail2.html?MmM5MDlmZGQ2NzhiZjE3OTAxNjc4YmY2YTk4YTA0ZGQ=" target="_blank">📄 원문</a></p></div></div>
+  <div class="caution-block"><div class="caution-block-header"><div class="caution-block-icon">🚔</div><div class="caution-block-title">치안관리처벌법</div></div><div class="caution-block-body"><p>공공질서를 해치는 행위에 경고·벌금·행정구류 처벌이 가능해요. 외국인은 동일 처벌에 더해 출국명령·추방이 추가될 수 있어요.<a class="law-ref" href="https://flk.npc.gov.cn/detail2.html?ZmYwODBiZGQ2NzhiZjE3OTAxNjc4YmY5NDY5MDA1YWY=" target="_blank">📄 원문</a></p></div></div>
+  <div class="do-dont">
+    <div class="do-box"><div class="do-box-title">✅ 안전한 행동</div><ul><li>소규모로 흩어져 자연스럽게 촬영</li><li>현수막 없이 기념 사진</li><li>가이드 허가 확인 후 단체 촬영</li><li>제지 시 즉시 응하기</li></ul></div>
+    <div class="dont-box"><div class="dont-box-title">🚫 피해야 할 행동</div><ul><li>현수막 펼치고 단체 사진</li><li>정치적 문구가 있는 소품</li><li>공공기관·군시설 근처 집단 행동</li><li>제지 시 항의·저항</li></ul></div>
+  </div>
+</div>
+<!-- ===== GROUP ===== -->
+<div id="sec-group" class="section">
+  <div class="sec-header">
+    <div class="sec-title">모둠 명단</div>
+    <div class="sec-desc">여량고등학교 모둠 구성이에요</div>
+  </div>
+  <div class="modum-card">
+    <div class="modum-header">
+      <div class="modum-title">1모둠</div>
+      <div><div class="modum-teacher-label">담당교사</div><div class="modum-teacher">박은지 · 김민성</div></div>
+    </div>
+    <div class="modum-members">
+      <span class="member-chip">호원기</span><span class="member-chip">박예주</span><span class="member-chip">김지원</span><span class="member-chip">송은서</span><span class="member-chip">문의환</span><span class="member-chip">호원진</span>
+    </div>
+  </div>
+  <div class="modum-card">
+    <div class="modum-header">
+      <div class="modum-title">2모둠</div>
+      <div><div class="modum-teacher-label">담당교사</div><div class="modum-teacher">변상주 · 김영복</div></div>
+    </div>
+    <div class="modum-members">
+      <span class="member-chip">김소민</span><span class="member-chip">김수현</span><span class="member-chip">박예솔</span><span class="member-chip">박휘용</span><span class="member-chip">안기찬</span><span class="member-chip">윤태원</span>
+    </div>
+  </div>
+</div>
 
 <!-- ===== CHECKLIST ===== -->
 <div id="sec-checklist" class="section">
@@ -3826,73 +3906,35 @@ function setQuick(cny) {
   calcFromCny();
 }
 
-// ── Phrase Popup ──
-let popupZhText = '';
-function openPopup(ko, zh, pin) {
-  popupZhText = zh;
-  document.getElementById('popup-ko').textContent = ko;
-  document.getElementById('popup-zh').textContent = zh;
-  document.getElementById('popup-pin').textContent = pin;
-  const popup = document.getElementById('phrase-popup');
-  popup.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-function closePopup() {
-  document.getElementById('phrase-popup').style.display = 'none';
-  document.body.style.overflow = '';
-}
-function speakPopup() {
-  if (popupZhText) speak(popupZhText);
-}
-
 // ── Speech ──
-// 음성 목록 미리 캐시
-let zhVoiceCache = null;
-function getZhVoice() {
-  if (zhVoiceCache) return zhVoiceCache;
-  const voices = window.speechSynthesis.getVoices();
-  zhVoiceCache = voices.find(v => v.lang === 'zh-CN')
-    || voices.find(v => v.lang === 'zh_CN')
-    || voices.find(v => v.lang.startsWith('zh'));
-  return zhVoiceCache;
-}
-
-function speakWithSynthesis(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'zh-CN';
-  utter.rate = 0.85;
-  utter.pitch = 1;
-  const voice = getZhVoice();
-  if (voice) utter.voice = voice;
-  window.speechSynthesis.speak(utter);
-}
-
 function speak(text) {
-  // iOS Safari는 Audio() 재생이 사용자 터치 이벤트 내에서만 허용됨
-  // Google TTS 먼저 시도, 실패하면 Web Speech API fallback
-  const encoded = encodeURIComponent(text);
-  const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=zh-CN&client=tw-ob`;
-  const audio = new Audio();
-  audio.crossOrigin = 'anonymous';
-  audio.src = url;
-  const playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => speakWithSynthesis(text));
+  try {
+    const encoded = encodeURIComponent(text);
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encoded}&tl=zh-CN&client=tw-ob`;
+    const audio = new Audio(url);
+    audio.play().catch(() => {
+      // fallback: Web Speech API
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'zh-CN';
+      utter.rate = 0.85;
+      const voices = window.speechSynthesis.getVoices();
+      const zhVoice = voices.find(v => v.lang === 'zh-CN') ||
+                      voices.find(v => v.lang.startsWith('zh'));
+      if (zhVoice) utter.voice = zhVoice;
+      window.speechSynthesis.speak(utter);
+    });
+  } catch(e) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'zh-CN';
+    utter.rate = 0.85;
+    window.speechSynthesis.speak(utter);
   }
 }
-
-// 음성 목록 미리 로드 (페이지 열릴 때 + 변경될 때)
-function preloadVoices() {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.getVoices();
-  zhVoiceCache = null; // 캐시 초기화해서 재탐색
-}
-if (window.speechSynthesis) {
-  window.speechSynthesis.onvoiceschanged = preloadVoices;
-  preloadVoices();
-}
+window.speechSynthesis && (window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices());
 
 // ── Weather ──
 const TRIP_DATES = ['2026-05-12', '2026-05-13', '2026-05-14', '2026-05-15'];
