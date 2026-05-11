@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>여량고 상하이 가이드 · 5/13–14</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #222222;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0f0f0;
+    --muted: #888;
+    --accent: #e8c97a;
+    --accent2: #c8a84b;
+    --red: #e05c5c;
+    --green: #5cb87a;
+    --blue: #5b9bd5;
+    --tag-bg: rgba(232,201,122,0.12);
+    --tag-text: #e8c97a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── Header ── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,15,15,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px 0;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .header-badge {
+    background: var(--accent);
+    color: #1a1200;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .header-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .header-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── Tab Nav ── */
+  .tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── Content ── */
+  .content {
+    padding: 20px 16px 100px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .day-section { display: none; }
+  .day-section.active { display: block; }
+
+  /* ── Day Label ── */
+  .day-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .day-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .day-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .day-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── Place Card ── */
+  .place-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .place-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .place-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--tag-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .place-info { flex: 1; min-width: 0; }
+  .place-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .place-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .place-guide {
+    font-size: 11px;
+    color: var(--accent2);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+  .chevron {
+    font-size: 16px;
+    color: var(--muted);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .place-card.open .chevron { transform: rotate(180deg); }
+
+  /* ── Place Body ── */
+  .place-body {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+  .place-card.open .place-body { display: block; }
+  .place-body-inner { padding: 16px; }
+
+  /* ── Section ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 16px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ── Steps ── */
+  .steps { display: flex; flex-direction: column; gap: 8px; }
+  .step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .step-text em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Menu List ── */
+  .menu-list { display: flex; flex-direction: column; gap: 8px; }
+  .menu-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .menu-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 18px;
+    margin-top: 1px;
+  }
+  .menu-info { flex: 1; }
+  .menu-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .menu-cn { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .menu-desc { font-size: 13px; color: var(--text); opacity: 0.8; margin-top: 4px; }
+
+  /* ── Floor Grid ── */
+  .floor-grid { display: flex; flex-direction: column; gap: 8px; }
+  .floor-row {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .floor-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .floor-items { font-size: 13px; color: var(--text); line-height: 1.6; opacity: 0.85; }
+
+  /* ── Tag Pills ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(232,201,122,0.2);
+  }
+  .tag.red {
+    background: rgba(224,92,92,0.1);
+    color: var(--red);
+    border-color: rgba(224,92,92,0.2);
+  }
+  .tag.blue {
+    background: rgba(91,155,213,0.1);
+    color: var(--blue);
+    border-color: rgba(91,155,213,0.2);
+  }
+  .tag.green {
+    background: rgba(92,184,122,0.1);
+    color: var(--green);
+    border-color: rgba(92,184,122,0.2);
+  }
+
+  /* ── Mission Box ── */
+  .mission {
+    background: rgba(232,201,122,0.08);
+    border: 1px solid rgba(232,201,122,0.25);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .mission-icon { font-size: 18px; flex-shrink: 0; }
+  .mission-text { font-size: 13px; color: var(--accent); font-weight: 600; }
+  .mission-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ── Route Box ── */
+  .route-box {
+    background: var(--surface2);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .route-title { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+  .route-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .route-item {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .route-arrow {
+    color: var(--accent);
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  /* ── Payment Badge ── */
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(92,184,122,0.1);
+    border: 1px solid rgba(92,184,122,0.25);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  /* ── Info Row ── */
+  .info-rows { display: flex; flex-direction: column; gap: 8px; }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .info-key { font-size: 13px; color: var(--muted); flex-shrink: 0; }
+  .info-val { font-size: 13px; color: var(--text); text-align: right; }
+
+  /* ── Heytea Menu ── */
+  .tea-list { display: flex; flex-direction: column; gap: 8px; }
+  .tea-item {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .tea-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .tea-desc { font-size: 13px; color: var(--text); opacity: 0.75; margin-top: 3px; }
+  .tea-rec { font-size: 12px; color: var(--accent); margin-top: 4px; font-weight: 500; }
+
+  /* ── Shop Guide ── */
+  .shop-card {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  .shop-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .shop-desc { font-size: 13px; color: var(--text); opacity: 0.8; line-height: 1.5; }
+  .shop-tips { font-size: 12px; color: var(--accent); margin-top: 6px; font-weight: 500; }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="header-badge">여량고</span>
+    <div>
+      <div class="header-title">상하이 고등학교 가이드</div>
+      <div class="header-sub">2026 국외 테마학습여행</div>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <div class="tab active" data-tab="day1" role="tab">5/13 (수)</div>
+    <div class="tab" data-tab="day2" role="tab">5/14 (목)</div>
+  </nav>
+</div>
+
+<div class="content">
+
+  <!-- ====== 5/13 ====== -->
+  <div class="day-section active" id="day1">
+    <div class="day-label">
+      <div class="day-dot"></div>
+      <div>
+        <div class="day-title">5월 13일 (수)</div>
+        <div class="day-desc">아쿠아리움 → 미식 → 쇼핑 → 예원 야경</div>
+      </div>
+    </div>
+
+    <!-- 팀 배정 -->
+    <div class="route-box">
+      <div class="route-title">🚕 택시 팀 배정</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div>
+          <span style="font-size:12px; color:var(--muted);">호원진 팀</span>
+          <div class="tags" style="margin-top:4px;">
+            <span class="tag">호원진</span><span class="tag">박예주</span><span class="tag">김지원</span><span class="tag">박은지</span>
+          </div>
+        </div>
+        <div>
+          <span style="font-size:12px; color:var(--muted);">송은서 팀</span>
+          <div class="tags" style="margin-top:4px;">
+            <span class="tag">송은서</span><span class="tag">문의환</span><span class="tag">호원기</span><span class="tag">김민성</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오션 아쿠아리움 -->
+    <div class="place-card" id="card-aqua">
+      <div class="place-header" onclick="toggle('card-aqua')">
+        <div class="place-icon">🐠</div>
+        <div class="place-info">
+          <div class="place-name">상하이 오션 아쿠아리움</div>
+          <div class="place-meta">아시아 최대급 아쿠아리움</div>
+          <div class="place-guide">가이드: 호원기</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">티켓 구매</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">입구 매표소로 이동</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text">성인·아동 여권 확인 후 결제 — <em>송은서 결제(학생)</em></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text">티켓 받은 뒤 입구에서 여권 원본과 QR코드 함께 검표</div>
+            </div>
+          </div>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag blue">위챗페이</span><span class="tag blue">알리페이</span><span class="tag">카드</span><span class="tag">현금</span>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">관람 순서</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">1층 입구 → 에스컬레이터 타고 <em>3층</em> 시작<br><span style="font-size:12px;color:var(--muted);">중국 구역 → 남미/전기뱀장어 → 호주/톱가오리</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text"><em>2층</em>으로 내려가며<br><span style="font-size:12px;color:var(--muted);">아프리카 → 동남아/산호초 → 해파리 → 극지/펭귄</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text"><em>지하(B1)</em> 클라이맥스 — 해저 터널 + 상어 만</div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-text">1층으로 나와 기념품점·카페 마무리</div>
+            </div>
+          </div>
+          <div class="mission">
+            <div class="mission-icon">📸</div>
+            <div>
+              <div class="mission-text">미션: 해저 터널에서 단체 사진 찍기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 동북인가 -->
+    <div class="place-card" id="card-dongbuk">
+      <div class="place-header" onclick="toggle('card-dongbuk')">
+        <div class="place-icon">🥟</div>
+        <div class="place-info">
+          <div class="place-name">동북인가</div>
+          <div class="place-meta">점심 식사</div>
+          <div class="place-guide">가이드: 김지원</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">주문 방법</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">자리에 먼저 착석</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text">테이블 위 QR코드 스캔 → 메뉴 주문</div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text">결제 — <em>공금 20만원</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 미니소 -->
+    <div class="place-card" id="card-miniso">
+      <div class="place-header" onclick="toggle('card-miniso')">
+        <div class="place-icon">🛍️</div>
+        <div class="place-info">
+          <div class="place-name">미니소</div>
+          <div class="place-meta">캐릭터 굿즈 · IP 완구</div>
+          <div class="place-guide">가이드: 박예주</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="floor-grid">
+            <div class="floor-row">
+              <div class="floor-title">1층 — 인기 IP 봉제 완구</div>
+              <div class="floor-items">치이카와 (한정판 소형 주의), 산리오 캐릭터 (헬로키티·폼폼푸린·시나모롤), 버터 베어 & 빛나는 인형</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">2층 — 애니메이션·반려동물·뷰티</div>
+              <div class="floor-items">한정판 블라인드 박스, 콜라보 피규어, 펫 코너, 산리오 x 미니소 립글로스</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">3층 — 프리미엄 향수 & 기획전</div>
+              <div class="floor-items">크리스탈 디퓨저, 니치 향수 (시음 무료), 계절 한정 향</div>
+            </div>
+          </div>
+          <div class="mission">
+            <div class="mission-icon">📸</div>
+            <div>
+              <div class="mission-text">미션: 대형 봉제 인형과 단체 사진 찍기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 바이롄ZX -->
+    <div class="place-card" id="card-bailians">
+      <div class="place-header" onclick="toggle('card-bailians')">
+        <div class="place-icon">🎌</div>
+        <div class="place-info">
+          <div class="place-name">바이롄ZX 창취창</div>
+          <div class="place-meta">애니메이션 · 피규어 · 일본 IP</div>
+          <div class="place-guide">가이드: 송은서 (층 이동 시 카톡)</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="floor-grid">
+            <div class="floor-row">
+              <div class="floor-title">지하 1층 — 간식·음료</div>
+              <div class="floor-items">테마 카페, 스낵숍 — 쇼핑 중 쉬어가기 좋아요</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">1층 — 팝업 스토어·카페</div>
+              <div class="floor-items">유명 IP 팝업, 대형 굿즈 브랜드, 세련된 카페</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">2~4층 — 피규어·프라모델</div>
+              <div class="floor-items">반다이 스피리츠, 애니메이트, 만화책, 나루토 일락 라멘 테마 레스토랑</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">5~6층 — 체험형 게임존</div>
+              <div class="floor-items">가챠폰(캡슐 토이), 대형 애니메이션 굿즈 숍, 테마 굿즈 숍</div>
+            </div>
+          </div>
+          <div class="mission">
+            <div class="mission-icon">📸</div>
+            <div>
+              <div class="mission-text">미션: 거대 전광판에서 단체 사진 찍기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 라이라이 샤오롱바오 -->
+    <div class="place-card" id="card-xiaolongbao">
+      <div class="place-header" onclick="toggle('card-xiaolongbao')">
+        <div class="place-icon">🥟</div>
+        <div class="place-info">
+          <div class="place-name">라이라이 샤오롱바오</div>
+          <div class="place-meta">석식 · 샤오롱바오 전문</div>
+          <div class="place-guide">가이드: 김지원</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">결제 방식</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">웨이팅 시 <em>공금 20만원</em>으로 선주문 (주문지 수령)</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text">택시 조로 나눠 착석 — <em>김지원</em>이 주문</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-label">주문 메뉴</div>
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-num">1</div>
+              <div class="menu-info">
+                <div class="menu-name">게살·돼지고기 샤오롱바오</div>
+                <div class="menu-cn">蟹粉鲜肉小笼</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">2</div>
+              <div class="menu-info">
+                <div class="menu-name">게살·돼지고기 완탕</div>
+                <div class="menu-cn">蟹粉小混沌</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">3</div>
+              <div class="menu-info">
+                <div class="menu-name">버섯·야채·돼지고기 완탕</div>
+                <div class="menu-cn">香菇菜肉大锟沌</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">4</div>
+              <div class="menu-info">
+                <div class="menu-name">게살 스프링롤</div>
+                <div class="menu-cn">蟹粉春卷</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">5</div>
+              <div class="menu-info">
+                <div class="menu-name">닭꼬치</div>
+                <div class="menu-cn">炸鸡肉串</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 예원 -->
+    <div class="place-card" id="card-yuyuan">
+      <div class="place-header" onclick="toggle('card-yuyuan')">
+        <div class="place-icon">🏮</div>
+        <div class="place-info">
+          <div class="place-name">예원 & 예원 옛거리</div>
+          <div class="place-meta">명대 정원 야경 · 간식 · 쇼핑</div>
+          <div class="place-guide">가이드: 호원진</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">동선</div>
+          <div class="route-box" style="margin-bottom:0;">
+            <div class="route-flow">
+              <span class="route-item">예원 옛거리 산책</span>
+              <span class="route-arrow">→</span>
+              <span class="route-item">구곡교 사진</span>
+              <span class="route-arrow">→</span>
+              <span class="route-item">간식</span>
+              <span class="route-arrow">→</span>
+              <span class="route-item">Heytea 휴식</span>
+              <span class="route-arrow">→</span>
+              <span class="route-item">야경</span>
+              <span class="route-arrow">→</span>
+              <span class="route-item">복귀</span>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">Heytea 추천 메뉴</div>
+          <div class="tea-list">
+            <div class="tea-item">
+              <div class="tea-name">Very Grape / Succulent Grape</div>
+              <div class="tea-desc">생포도 과육 + 차 베이스. 상큼하고 시원해요.</div>
+              <div class="tea-rec">✓ 첫 주문으로 실패 없는 선택</div>
+            </div>
+            <div class="tea-item">
+              <div class="tea-name">Mango Coconut Boom</div>
+              <div class="tea-desc">망고 + 코코넛 조합. 디저트 느낌이 강해요.</div>
+              <div class="tea-rec">✓ 달달한 음료 좋아하면 무조건</div>
+            </div>
+            <div class="tea-item">
+              <div class="tea-name">Mango Grapefruit Boom</div>
+              <div class="tea-desc">망고의 달콤함 + 자몽의 상큼함.</div>
+              <div class="tea-rec">✓ 달지만 너무 느끼한 건 싫을 때</div>
+            </div>
+            <div class="tea-item">
+              <div class="tea-name">Cheese Tea / Cloud Tea</div>
+              <div class="tea-desc">차 위에 짭짤하고 크리미한 치즈폼.</div>
+              <div class="tea-rec">✓ 새로운 맛 도전해보고 싶을 때</div>
+            </div>
+            <div class="tea-item">
+              <div class="tea-name">Matcha Cloud / Triple Matcha</div>
+              <div class="tea-desc">진하고 부드러운 말차.</div>
+              <div class="tea-rec">✓ 말차 좋아하면 추천</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">예원 옛거리 쇼핑 추천</div>
+          <div class="shop-card">
+            <div class="shop-name">소응 (小凝)</div>
+            <div class="shop-desc">중국 차를 사용한 핸드크림 전문 브랜드. 가격 합리적이에요.</div>
+            <div class="shop-tips">개별 선물 포장 + 쇼핑백 요청 가능</div>
+          </div>
+          <div class="shop-card">
+            <div class="shop-name">3 cardé studio</div>
+            <div class="shop-desc">기념품샵. 예쁜 마그넷이 많아요.</div>
+          </div>
+          <div class="shop-card">
+            <div class="shop-name">따바이투</div>
+            <div class="shop-desc">우유 카라멜 브랜드. 예원 매장에는 플레이버가 15가지 이상. 묶음 세트·기념 캔디도 살 수 있어요.</div>
+          </div>
+          <div class="shop-card">
+            <div class="shop-name">CHARLETEY</div>
+            <div class="shop-desc">과일티·허브티·블랙티 전문점. 선물하기 좋고 시음 가능해요.</div>
+            <div class="shop-tips">차 가격이 저렴한 편은 아니에요 · 개별 쇼핑백 요청 가능</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 5/14 ====== -->
+  <div class="day-section" id="day2">
+    <div class="day-label">
+      <div class="day-dot"></div>
+      <div>
+        <div class="day-title">5월 14일 (목)</div>
+        <div class="day-desc">야생동물원 → 디즈니타운 → 치즈케이크 팩토리</div>
+      </div>
+    </div>
+
+    <!-- 야생동물원 -->
+    <div class="place-card" id="card-zoo">
+      <div class="place-header" onclick="toggle('card-zoo')">
+        <div class="place-icon">🦁</div>
+        <div class="place-info">
+          <div class="place-name">상하이 야생 동물원</div>
+          <div class="place-meta">사파리 버스 · 판다 · 코끼리</div>
+          <div class="place-guide">가이드: 문의환</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">티켓 구매</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text"><em>송은서 결제</em> 후 더치페이</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text">여권 반드시 지참</div>
+            </div>
+          </div>
+          <div class="info-rows" style="margin-top:12px;">
+            <div class="info-row">
+              <div class="info-key">매표소 위치</div>
+              <div class="info-val" style="font-size:12px; color:var(--muted);">31.0561032, 121.7115600</div>
+            </div>
+            <div class="info-row">
+              <div class="info-key">학생·청소년 (6~18세)</div>
+              <div class="info-val" style="color:var(--accent); font-weight:600;">95위안</div>
+            </div>
+            <div class="info-row">
+              <div class="info-key">성인</div>
+              <div class="info-val" style="color:var(--accent); font-weight:600;">190위안</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">입장 후 동선</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">웰컴 공연 패스 → <em>바로 사자 구역</em>으로 이동</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text"><em>무료 셔틀버스</em> 탑승 (자리 차면 바로 출발)</div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text"><em>앞자리</em>에 앉아야 시야 좋아요 — 한 바퀴 약 30분</div>
+            </div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:10px 12px; margin-top:10px;">
+            <div style="font-size:12px; color:var(--muted);">무료 버스 = 일반 관광버스 형태</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:3px;">유료 버스 = 철창으로 된 노란 사파리 전용버스</div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">점심 — 동물원 내 맥도날드</div>
+          <div style="font-size:12px; color:var(--muted); margin-bottom:10px;">정문 근처 보행구역 · 메뉴 한정·가격 다소 높음</div>
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-num">1</div>
+              <div class="menu-info">
+                <div class="menu-name">맥스파이시 상하이 치킨버거</div>
+                <div class="menu-desc">한국인에게 친숙. 빅맥 치즈버거도 있어요.</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">2</div>
+              <div class="menu-info">
+                <div class="menu-name">앙구스 버거 시리즈</div>
+                <div class="menu-desc">패티 두껍고 육즙 많은 고급형 버거</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">3</div>
+              <div class="menu-info">
+                <div class="menu-name">타로 파이</div>
+                <div class="menu-desc">보라색 타로 앙금. 중국 맥도날드 필수 디저트</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">4</div>
+              <div class="menu-info">
+                <div class="menu-name">콘 컵</div>
+                <div class="menu-desc">감자튀김 대신 선택할 수 있는 따뜻한 컵 옥수수</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-num">5</div>
+              <div class="menu-info">
+                <div class="menu-name">치킨 윙</div>
+                <div class="menu-desc">짭조름하고 매콤한 시즈닝이 배어 있어요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 디즈니타운 -->
+    <div class="place-card" id="card-disney">
+      <div class="place-header" onclick="toggle('card-disney')">
+        <div class="place-icon">🏰</div>
+        <div class="place-info">
+          <div class="place-name">상하이 디즈니타운</div>
+          <div class="place-meta">쇼핑 · 레스토랑 · 야경</div>
+          <div class="place-guide">가이드: 호원진</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="section-label">추천 동선</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-text">입구 도착 → 메인 거리(호숫가) 산책 — 약 30분</div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-text"><em>World of Disney</em> 매장 — 45분~1시간<br><span style="font-size:12px;color:var(--muted);">인기 상품은 늦게 가면 사람 많아져요. 가장 먼저 들어가는 걸 추천해요.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-text"><em>LEGO Store + Pop Mart + Hot Toys</em> — 1시간</div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-text">카페 휴식 — 30분<br><span style="font-size:12px;color:var(--muted);">스타벅스 리저브, Heytea, Peet's Coffee</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div class="step-text"><em>Wishing Star Lake</em> 산책 + 야경 — 1시간<br><span style="font-size:12px;color:var(--muted);">해질 무렵 가장 추천. 호수 반영이 예쁘게 나와요.</span></div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">World of Disney</div>
+          <div class="tags">
+            <span class="tag">미키·미니 인형</span><span class="tag">의류·후드</span><span class="tag">머리띠·모자</span>
+            <span class="tag">핀 뱃지</span><span class="tag">시즌 한정</span><span class="tag">상하이 전용 굿즈</span>
+            <span class="tag">중국풍 미키</span><span class="tag">지역 한정 머그컵</span>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">LEGO Store</div>
+          <div class="floor-grid">
+            <div class="floor-row">
+              <div class="floor-title">1층 — 조형물</div>
+              <div class="floor-items">우디&버즈, 카일로 렌, 미키마우스, 마블 히어로, 중국풍 드래곤 구조물</div>
+            </div>
+            <div class="floor-row">
+              <div class="floor-title">2층 — 상점</div>
+              <div class="floor-items">스타워즈, 마블, 디즈니, 시티/테크닉, 아키텍처, 기념품용 키링/소형 세트</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <div class="section-label">Pop Mart</div>
+          <div class="tags">
+            <span class="tag">Labubu / The Monsters</span><span class="tag">Skullpanda / Molly</span>
+            <span class="tag">Dimoo / Hirono</span><span class="tag">Disney 콜라보</span>
+          </div>
+          <div style="font-size:12px; color:var(--muted); margin-top:8px;">랜덤박스·피규어 판매. 시기에 따라 시리즈 다를 수 있어요.</div>
+
+          <div class="divider"></div>
+          <div class="section-label">그 밖의 상점</div>
+          <div class="tags">
+            <span class="tag">크록스</span><span class="tag">아디다스</span><span class="tag">판도라</span>
+            <span class="tag">슈퍼드라이</span><span class="tag">잇푸도</span><span class="tag">스타벅스</span>
+            <span class="tag">토스트박스</span><span class="tag">브레드톡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 치즈케이크 팩토리 -->
+    <div class="place-card" id="card-cheesecake">
+      <div class="place-header" onclick="toggle('card-cheesecake')">
+        <div class="place-icon">🍰</div>
+        <div class="place-info">
+          <div class="place-name">치즈케이크 팩토리</div>
+          <div class="place-meta">석식 · 디즈니타운 내</div>
+          <div class="place-guide">가이드: 김지원</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="place-body">
+        <div class="place-body-inner">
+          <div class="info-rows">
+            <div class="info-row">
+              <div class="info-key">예상 비용</div>
+              <div class="info-val" style="color:var(--accent); font-weight:600;">1인 150~200위안 (약 3~4만원)</div>
+            </div>
+            <div class="info-row">
+              <div class="info-key">결제</div>
+              <div class="info-val">공금 결제</div>
+            </div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:12px; margin-top:12px; font-size:13px; color:var(--text); line-height:1.6; opacity:0.85;">
+            미국 유명 레스토랑 체인. 치즈케이크, 스테이크, 파스타, 수제 버거, 샐러드 등 미국식 식사. 양이 상당히 많아요.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggle(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
